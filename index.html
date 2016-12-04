@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <p>Welcome to eOSB.js</p>
+
+    <button id="round_1" type="button">Round 1</button>
+    <button id="round_2" type="button">Round 2</button>
+    <button id="round_3" type="button">Round 3</button>
+    <button id="round_4" type="button">Round 4</button>
+    <button id="round_5" type="button">Round 5</button>
+    <button id="round_6" type="button">Round 6</button>
+    <button id="round_7" type="button">Round 7</button>
+    <button id="round_8" type="button">Round 8</button>
+    <button id="round_9" type="button">Round 9</button>
+    <button id="round_10" type="button">Round 10</button>
+    <button id="round_11" type="button">Round 11</button>
+
+    <div id="question">
+      <span id="question_type"></span>
+      <span id="question_number"></span>
+      
+      <div id="question_format"></div>
+
+      <div id="question_text"></div>
+
+      <div id="question_choices">
+        <span>W</span>
+        <div id="option_w"></div>
+
+        <span>X</span>
+        <div id="option_x"></div>
+
+        <span>Y</span>
+        <div id="option_y"></div>
+
+        <span>Z</span>
+        <div id="option_z"></div>
+      </div>
+
+      <br />
+      <br />
+
+      <div>Correct Answer</div>
+      <div id="question_answer"></div>
+
+      <br />
+      <br />
+      <br />
+      <button id="prev" type="button">prev</button>
+      <button id="next" type="button">next</button>
+    </div>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>

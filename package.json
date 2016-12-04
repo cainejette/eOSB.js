@@ -1,0 +1,20 @@
+{
+  "name": "eOSB.js",
+  "version": "1.0.0",
+  "description": "electronified eOSB",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/cainejette/eOSB.js",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Caine Jette",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.17"
+  }
+}

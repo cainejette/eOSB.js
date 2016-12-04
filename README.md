@@ -1,0 +1,3 @@
+# eOSB.js
+
+electronified eOSB
