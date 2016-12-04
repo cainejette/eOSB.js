@@ -15,6 +15,7 @@
     "electron": "^1.4.1"
   },
   "dependencies": {
+    "pdfjs-dist-for-node": "^1.0.892-rc.1",
     "xml2js": "^0.4.17"
   }
 }
