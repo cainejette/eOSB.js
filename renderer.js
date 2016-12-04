@@ -63,7 +63,8 @@ let question_number = 0;
 let question;
 
 document.querySelector('#prev').addEventListener('click', () => update_question(--question_number));
-document.querySelector('#next').addEventListener('click', () => update_question(++question_number));
+document.querySelector('#next_question').addEventListener('click', () => update_question(++question_number));
+document.querySelector('#next_tossup').addEventListener('click', () => update_question(++question_number));
 
 document.querySelector('#question').setAttribute('style', 'display: none');
 

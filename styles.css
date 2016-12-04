@@ -1,11 +1,14 @@
-#next {
-  background-color: red;
+#next_question {
+  height: 100px;
+  width: 300px;
+}
+
+#next_tossup {
   height: 100px;
   width: 300px;
 }
 
 #prev {
-  background-color: blue;
   height: 100px;
   width: 300px;
 }
