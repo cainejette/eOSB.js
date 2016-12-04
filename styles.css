@@ -1,0 +1,11 @@
+#next {
+  background-color: red;
+  height: 100px;
+  width: 300px;
+}
+
+#prev {
+  background-color: blue;
+  height: 100px;
+  width: 300px;
+}
