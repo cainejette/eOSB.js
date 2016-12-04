@@ -24,11 +24,7 @@ document.querySelector('#tcq_a').addEventListener('click', () => open_tcq('a'));
 document.querySelector('#tcq_b').addEventListener('click', () => open_tcq('b'));
 document.querySelector('#tcq_a_solution').addEventListener('click', () => open_tcq('a_solutions'));
 document.querySelector('#tcq_b_solution').addEventListener('click', () => open_tcq('b_solutions'));
-
-
 document.querySelector('#hide_tcq').addEventListener('click', () => hide_tcq());
-
-
 
 function hide_tcq() {
   document.querySelector('#the_canvas').setAttribute('style', 'display: none');
@@ -38,47 +34,20 @@ function open_tcq(tcq_name) {
   document.querySelector('#the_canvas').setAttribute('style', 'display: visible');
   console.log('opening tcq...');
 
-  //
-  // If absolute URL from the remote server is provided, configure the CORS
-  // header on that server.
-  //
   var url = `./questions/tcq_${round_number}_${tcq_name}.pdf`;
-
-  //
-  // Disable workers to avoid yet another cross-origin issue (workers need
-  // the URL of the script to be loaded, and dynamically loading a cross-origin
-  // script does not work).
-  //
   PDFJS.disableWorker = true;
-
-  //
-  // The workerSrc property shall be specified.
-  //
-  // PDFJS.workerSrc = './node_modules/pdfjs-dist/build/pdf.worker.js';
   PDFJS.workerSrc = '';
 
-  //
-  // Asynchronous download PDF
-  //
   PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
-    //
-    // Fetch the first page
-    //
     pdf.getPage(1).then(function getPageHelloWorld(page) {
       var scale = 1.5;
       var viewport = page.getViewport(scale);
 
-      //
-      // Prepare canvas using PDF page dimensions
-      //
       var canvas = document.querySelector('#the_canvas');
       var context = canvas.getContext('2d');
       canvas.height = viewport.height;
       canvas.width = viewport.width;
 
-      //
-      // Render PDF page into canvas context
-      //
       var renderContext = {
         canvasContext: context,
         viewport: viewport
@@ -116,8 +85,6 @@ function update_question(new_question_number) {
   question = round.Question[question_number];
   document.querySelector('#question_number').textContent = question.QuestionPair[0];
 
-  
-  
   console.dir(question);
 
   if (question.QuestionFormat[0] === 'Multiple Choice') {
