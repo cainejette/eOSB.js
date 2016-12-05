@@ -81,12 +81,32 @@ function open(new_round_number) {
   });
 }
 
+function update_buttons(question_number) {
+  // disable back button on first question
+  if (question_number == 0) {
+    document.querySelector('#prev').setAttribute('disabled', 'disabled');
+  }
+  else {
+    document.querySelector('#prev').removeAttribute('disabled');
+  }
+
+  // disable forward buttons on last question
+  if (question_number == 39) {
+    document.querySelector('#next_question').setAttribute('disabled', 'disabled');
+    document.querySelector('#next_tossup').setAttribute('disabled', 'disabled');
+  } else {
+    document.querySelector('#next_question').removeAttribute('disabled');
+    document.querySelector('#next_tossup').removeAttribute('disabled');
+  }
+}
+
 function update_question(new_question_number) {
   question_number = new_question_number;
+
+  update_buttons(question_number);
+
   question = round.Question[question_number];
   document.querySelector('#question_number').textContent = question.QuestionPair[0];
-
-  console.dir(question);
 
   if (question.QuestionFormat[0] === 'Multiple Choice') {
     document.querySelector('#question_choices').setAttribute('style', 'display: visible');
