@@ -24,14 +24,18 @@
         <button id="round_11" type="button">Round 11</button>
       </div>
 
+      <div id="round_over">round over! <a id="choose_another">choose another by clicking here</a></div>
+
       <div id="question">
         <div id="prompt">
-          <button id="tcq_a" type="button">Open TCQ A</button>
-          <button id="tcq_b" type="button">Open TCQ B</button>
-          <button id="tcq_a_solution" type="button">Open TCQ A Solutions</button>
-          <button id="tcq_b_solution" type="button">Open TCQ B Solutions</button>
-          <button id="hide_tcq" type="button">Close TCQ</button>
-          <canvas id="the_canvas"></canvas>
+          <div id="tcq">
+            <button id="tcq_a" type="button">Open TCQ A</button>
+            <button id="tcq_b" type="button">Open TCQ B</button>
+            <button id="tcq_a_solution" type="button">Open TCQ A Solutions</button>
+            <button id="tcq_b_solution" type="button">Open TCQ B Solutions</button>
+            <button id="hide_tcq" type="button">Close TCQ</button>
+            <canvas id="the_canvas"></canvas>
+          </div>
 
           <br />
           <span id="question_type"></span>
@@ -60,13 +64,13 @@
           <div>Correct Answer</div>
           <div id="question_answer"></div>
         </div>
+      </div>
 
-        <div id="inputs">
+      <div id="inputs">
           <button id="prev" type="button"><img src="./images/back_arrow.png" /></button>
           <button id="next_question" type="button"><img src="./images/red_x.png" /></button>
           <button id="next_tossup" type="button"><img src="./images/forward_arrow.png" /></button>
         </div>
-      </div>
     </div>
   </body>
 
