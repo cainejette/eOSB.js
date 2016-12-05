@@ -9,17 +9,17 @@ var fs = require('fs');
 var path = require('path');
 var PDFJS = require('pdfjs-dist-for-node');
 
-document.querySelector('#round_1').addEventListener('click', () => open(1));
-document.querySelector('#round_2').addEventListener('click', () => open(2));
-document.querySelector('#round_3').addEventListener('click', () => open(3));
-document.querySelector('#round_4').addEventListener('click', () => open(4));
-document.querySelector('#round_5').addEventListener('click', () => open(5));
-document.querySelector('#round_6').addEventListener('click', () => open(6));
-document.querySelector('#round_7').addEventListener('click', () => open(7));
-document.querySelector('#round_8').addEventListener('click', () => open(8));
-document.querySelector('#round_9').addEventListener('click', () => open(9));
-document.querySelector('#round_10').addEventListener('click', () => open(10));
-document.querySelector('#round_11').addEventListener('click', () => open(11));
+document.querySelector('#round_1').addEventListener('click', () => open_round(1));
+document.querySelector('#round_2').addEventListener('click', () => open_round(2));
+document.querySelector('#round_3').addEventListener('click', () => open_round(3));
+document.querySelector('#round_4').addEventListener('click', () => open_round(4));
+document.querySelector('#round_5').addEventListener('click', () => open_round(5));
+document.querySelector('#round_6').addEventListener('click', () => open_round(6));
+document.querySelector('#round_7').addEventListener('click', () => open_round(7));
+document.querySelector('#round_8').addEventListener('click', () => open_round(8));
+document.querySelector('#round_9').addEventListener('click', () => open_round(9));
+document.querySelector('#round_10').addEventListener('click', () => open_round(10));
+document.querySelector('#round_11').addEventListener('click', () => open_round(11));
 document.querySelector('#tcq_a').addEventListener('click', () => open_tcq('a'));
 document.querySelector('#tcq_b').addEventListener('click', () => open_tcq('b'));
 document.querySelector('#tcq_a_solution').addEventListener('click', () => open_tcq('a_solutions'));
@@ -68,14 +68,14 @@ document.querySelector('#next_tossup').addEventListener('click', () => update_qu
 
 document.querySelector('#question').setAttribute('style', 'display: none');
 
-function open(new_round_number) {
+function open_round(new_round_number) {
   round_number = new_round_number;
   fs.readFile(path.join(__dirname, 'questions', `/round_${round_number}.xml`), function(err, data) {
     parser.parseString(data, function (err, result) {
-      console.log('round: ' + round_number);
       round = result.Round.Questions[0];
 
       document.querySelector('#question').setAttribute('style', 'display: visible');
+      document.querySelector('#round_selection').setAttribute('style', 'display: none');
       update_question(0);
     });
   });

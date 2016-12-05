@@ -1,3 +1,24 @@
+#content {
+  position: relative;
+}
+
+#prompt {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#answer {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#inputs {
+  position: fixed;
+  bottom: 0;
+}
+
 #next_question {
   height: 100px;
   width: 300px;
