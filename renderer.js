@@ -5,6 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const PDFJS = require('pdfjs-dist-for-node');
 
+const BrowserWindow = require('electron').remote.BrowserWindow
+
 let round;
 let round_number = 1;
 let question_number = 0;
@@ -32,17 +34,19 @@ document.querySelector('#next_question').addEventListener('click', () => next_to
 document.querySelector('#next_tossup').addEventListener('click', () => update_question(++question_number));
 document.querySelector('#choose_another').addEventListener('click', () => choose_round());
 
-document.querySelector('#password').addEventListener('keydown', (e) => get_password(e));
+document.querySelector('#password').addEventListener('keydown', (e) => check_password(e));
+document.querySelector('#submit').addEventListener('click', () => check_password());
 
-document.querySelector('#submit').addEventListener('click', () => get_password());
+document.querySelector('#show_tcq').addEventListener('click', () => display_tcqs());
 
 document.querySelector('#password_error').setAttribute('style', 'display: none');
 document.querySelector('#round_selection').setAttribute('style', 'display: none');
+document.querySelector('#tcq_selection').setAttribute('style', 'display: none');
 document.querySelector('#question').setAttribute('style', 'display: none');
 document.querySelector('#inputs').setAttribute('style', 'display: none');
 document.querySelector('#round_over').setAttribute('style', 'display: none');
 
-function get_password(e) {
+function check_password(e) {
   if (e == undefined || e.keyCode == 13) {
     if (document.querySelector('#password').value === "asdf") {
       console.log('right');
@@ -56,6 +60,12 @@ function get_password(e) {
   } else {
     document.querySelector('#password_error').setAttribute('style', 'display: none');
   }
+}
+
+function display_tcqs() {
+  document.querySelector('#question').setAttribute('style', 'display: none');
+  document.querySelector('#inputs').setAttribute('style', 'display: none');
+  document.querySelector('#tcq_selection').setAttribute('style', 'display: visible');
 }
 
 function choose_round() {
@@ -148,9 +158,16 @@ function hide_tcq() {
 
 function open_tcq(tcq_name) {
   opened_tcq = true;
-  document.querySelector('#the_canvas').setAttribute('style', 'display: visible');
-
   var url = `./questions/tcq_${round_number}_${tcq_name}.pdf`;
+
+  const tcqPath = path.join('file://', __dirname, './tcq.html');
+  let win = new BrowserWindow({ width: 400, height: 320 });
+  win.on('close', function () { win = null });
+  win.loadURL(tcqPath);
+  win.show();
+
+  document.querySelector('#tcq').setAttribute('style', 'display: visible');
+  
   PDFJS.disableWorker = true;
   PDFJS.workerSrc = '';
 
@@ -159,7 +176,7 @@ function open_tcq(tcq_name) {
       var scale = 1.5;
       var viewport = page.getViewport(scale);
 
-      var canvas = document.querySelector('#the_canvas');
+      var canvas = document.querySelector('#tcq');
       var context = canvas.getContext('2d');
       canvas.height = viewport.height;
       canvas.width = viewport.width;

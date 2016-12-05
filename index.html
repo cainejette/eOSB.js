@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>eOSB</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -10,7 +10,7 @@
 
       <div id="user_authentication">
         <h1>Welcome to eOSB.js</h1>
-        <h2>Enter password to begin:</h2>
+        <h2>Enter password:</h2>
         <p id="password_error">Try again!</p>
         <input id="password" type="password" autofocus>
         <button id="submit">Submit</button>
@@ -18,8 +18,8 @@
       </div>
 
       <div id="round_selection">
-        <h2>Select a round to get started:</h2>
-        <button id="round_1" class="round_button" type="button">Round 1</button>
+        <h2>Select a round:</h2>
+        <button id="round_1" class="round_button" type="button" autofocus>Round 1</button>
         <button id="round_2" class="round_button" type="button">Round 2</button>
         <button id="round_3" class="round_button" type="button">Round 3</button>
         <button id="round_4" class="round_button" type="button">Round 4</button>
@@ -34,15 +34,19 @@
 
       <div id="round_over">round over! <a id="choose_another">choose another by clicking here</a></div>
 
+      <div id="tcq_selection">
+        <button id="tcq_a" type="button">Open TCQ A</button>
+        <button id="tcq_b" type="button">Open TCQ B</button>
+        <button id="tcq_a_solution" type="button">Open TCQ A Solutions</button>
+        <button id="tcq_b_solution" type="button">Open TCQ B Solutions</button>
+        <button id="hide_tcq" type="button">Close TCQ</button>
+        
+      </div>
+
       <div id="question">
         <div id="prompt">
           <div id="tcq">
-            <button id="tcq_a" type="button">Open TCQ A</button>
-            <button id="tcq_b" type="button">Open TCQ B</button>
-            <button id="tcq_a_solution" type="button">Open TCQ A Solutions</button>
-            <button id="tcq_b_solution" type="button">Open TCQ B Solutions</button>
-            <button id="hide_tcq" type="button">Close TCQ</button>
-            <canvas id="the_canvas"></canvas>
+            <button id="show_tcq">Show TCQs</button>
           </div>
 
           <br />
