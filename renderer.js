@@ -32,12 +32,29 @@ document.querySelector('#next_question').addEventListener('click', () => next_to
 document.querySelector('#next_tossup').addEventListener('click', () => update_question(++question_number));
 document.querySelector('#choose_another').addEventListener('click', () => choose_round());
 
+document.querySelector('#password').addEventListener('keydown', (e) => get_password(e));
+
+document.querySelector('#submit').addEventListener('click', () => get_password());
+
+document.querySelector('#round_selection').setAttribute('style', 'display: none');
 document.querySelector('#question').setAttribute('style', 'display: none');
 document.querySelector('#inputs').setAttribute('style', 'display: none');
 document.querySelector('#round_over').setAttribute('style', 'display: none');
 
+function get_password(e) {
+  if (e == undefined || e.keyCode == 13) {
+    if (document.querySelector('#password').value === "asdf") {
+      console.log('right');
+      choose_round();
+    } else {
+      console.log('wrong');
+    }
+  }
+}
+
 function choose_round() {
   document.querySelector('#round_selection').setAttribute('style', 'display: visible');
+  document.querySelector('#user_authentication').setAttribute('style', 'display: none');
   document.querySelector('#question').setAttribute('style', 'display: none');
   document.querySelector('#inputs').setAttribute('style', 'display: none');
   document.querySelector('#round_over').setAttribute('style', 'display: none');

@@ -2,6 +2,21 @@
   position: relative;
 }
 
+#password {
+  height: 200px;
+  width: 400px;
+}
+
+.round_button {
+  height: 100px;
+  width: 200px;
+}
+
+#submit {
+  height: 200px;
+  width: 400px;
+}
+
 #prompt {
   position: absolute;
   left: 0;
