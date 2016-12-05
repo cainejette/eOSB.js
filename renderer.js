@@ -36,6 +36,7 @@ document.querySelector('#password').addEventListener('keydown', (e) => get_passw
 
 document.querySelector('#submit').addEventListener('click', () => get_password());
 
+document.querySelector('#password_error').setAttribute('style', 'display: none');
 document.querySelector('#round_selection').setAttribute('style', 'display: none');
 document.querySelector('#question').setAttribute('style', 'display: none');
 document.querySelector('#inputs').setAttribute('style', 'display: none');
@@ -48,7 +49,12 @@ function get_password(e) {
       choose_round();
     } else {
       console.log('wrong');
+      document.querySelector('#password').value = '';
+      document.querySelector('#password').focus();
+      document.querySelector('#password_error').setAttribute('style', 'display: visible');
     }
+  } else {
+    document.querySelector('#password_error').setAttribute('style', 'display: none');
   }
 }
 
