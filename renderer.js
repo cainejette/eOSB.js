@@ -97,15 +97,19 @@ function next_tossup() {
   }
 }
 
-function update_question(new_question_number) {
-  question_number = new_question_number;
-
-  update_buttons(question_number);
+function update_tcq_button() {
   if (question_number == 20 && !opened_tcq) {
     document.querySelector('#tcq').setAttribute('style', 'display: visible');
   } else {
     document.querySelector('#tcq').setAttribute('style', 'display: none');
   }
+}
+
+function update_question(new_question_number) {
+  question_number = new_question_number;
+
+  update_buttons(question_number);
+  update_tcq_button();
 
   if (question_number < 40) {
     question = round.Question[question_number];
@@ -153,6 +157,10 @@ function update_buttons(question_number) {
 
 function hide_tcq() {
   ipcRenderer.send('hide_tcq');
+  update_tcq_button();
+  document.querySelector('#question').setAttribute('style', 'display: visible');
+  document.querySelector('#inputs').setAttribute('style', 'display: visible');
+  document.querySelector('#tcq_selection').setAttribute('style', 'display: none');
 };
 
 function open_tcq(tcq_name) {
