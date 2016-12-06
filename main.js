@@ -3,6 +3,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+var ipcMain = require('electron').ipcMain
 
 const path = require('path')
 const url = require('url')
@@ -32,6 +33,12 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  var tcqWindow = new BrowserWindow({width: 200, height: 200, show: false});
+  ipcMain.on('tcq', function(evt, arg) {
+    console.log('hi!');
+    console.dir(arg);
+  });
 }
 
 // This method will be called when Electron has finished

@@ -4,7 +4,7 @@ const parser = require('xml2js');
 const fs = require('fs');
 const path = require('path');
 const PDFJS = require('pdfjs-dist-for-node');
-
+var ipcRenderer = require('electron').ipcRenderer
 const BrowserWindow = require('electron').remote.BrowserWindow
 
 let round;
@@ -158,34 +158,35 @@ function hide_tcq() {
 
 function open_tcq(tcq_name) {
   opened_tcq = true;
-  var url = `./questions/tcq_${round_number}_${tcq_name}.pdf`;
+  ipcRenderer.send('tcq', tcq_name);
+  // var url = `./questions/tcq_${round_number}_${tcq_name}.pdf`;
 
-  const tcqPath = path.join('file://', __dirname, './tcq.html');
-  let win = new BrowserWindow({ width: 400, height: 320 });
-  win.on('close', function () { win = null });
-  win.loadURL(tcqPath);
-  win.show();
+  // const tcqPath = path.join('file://', __dirname, './tcq.html');
+  // let win = new BrowserWindow({ width: 400, height: 320 });
+  // win.on('close', function () { win = null });
+  // win.loadURL(tcqPath);
+  // win.show();
 
-  document.querySelector('#tcq').setAttribute('style', 'display: visible');
+  // document.querySelector('#tcq').setAttribute('style', 'display: visible');
   
-  PDFJS.disableWorker = true;
-  PDFJS.workerSrc = '';
+  // PDFJS.disableWorker = true;
+  // PDFJS.workerSrc = '';
 
-  PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
-    pdf.getPage(1).then(function getPageHelloWorld(page) {
-      var scale = 1.5;
-      var viewport = page.getViewport(scale);
+  // PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
+  //   pdf.getPage(1).then(function getPageHelloWorld(page) {
+  //     var scale = 1.5;
+  //     var viewport = page.getViewport(scale);
 
-      var canvas = document.querySelector('#tcq');
-      var context = canvas.getContext('2d');
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+  //     var canvas = document.querySelector('#tcq');
+  //     var context = canvas.getContext('2d');
+  //     canvas.height = viewport.height;
+  //     canvas.width = viewport.width;
 
-      var renderContext = {
-        canvasContext: context,
-        viewport: viewport
-      };
-      page.render(renderContext);
-    });
-  });
+  //     var renderContext = {
+  //       canvasContext: context,
+  //       viewport: viewport
+  //     };
+  //     page.render(renderContext);
+  //   });
+  // });
 };
