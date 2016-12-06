@@ -1,40 +1,43 @@
-const electron = require('electron')
-// Module to control application life.
-const app = electron.app
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
-var ipcMain = require('electron').ipcMain
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+const ipcMain = require('electron').ipcMain;
 
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
+let tcqWindow;
 
 function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1200, height: 800})
+  mainWindow = new BrowserWindow({width: 1200, height: 800});
 
-  // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
+  mainWindow.center();
 
-  // Emitted when the window is closed.
+  var tcqWindow = new BrowserWindow({show: false});
+
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
+    mainWindow = null;
+    tcqWindow.setClosable(true);
+    tcqWindow.close();
+    tcqWindow = null;
   })
+  
+  tcqWindow.setClosable(false);
+  tcqWindow.maximize();
 
-  var tcqWindow = new BrowserWindow({width: 200, height: 200, show: false});
   tcqWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'tcq.html'),
     protocol: 'file:',
@@ -43,10 +46,7 @@ function createWindow () {
 
   ipcMain.on('show_tcq', function(evt, arg) {
     tcqWindow.webContents.send('open_tcq', arg);
-    console.dir(arg);
-
     tcqWindow.show();
-    tcqWindow.webContents.openDevTools();
   });
 
   ipcMain.on('hide_tcq', function(evt, arg) {
