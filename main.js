@@ -35,9 +35,22 @@ function createWindow () {
   })
 
   var tcqWindow = new BrowserWindow({width: 200, height: 200, show: false});
-  ipcMain.on('tcq', function(evt, arg) {
-    console.log('hi!');
+  tcqWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'tcq.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  ipcMain.on('show_tcq', function(evt, arg) {
+    tcqWindow.webContents.send('open_tcq', arg);
     console.dir(arg);
+
+    tcqWindow.show();
+    tcqWindow.webContents.openDevTools();
+  });
+
+  ipcMain.on('hide_tcq', function(evt, arg) {
+    tcqWindow.hide();
   });
 }
 
