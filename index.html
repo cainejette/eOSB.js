@@ -4,35 +4,35 @@
     <meta charset="UTF-8">
     <title>eOSB</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    <div id="content">
+    <div id="content" class="container-fluid">
 
-      <div id="user_authentication">
-        <h1>Welcome to eOSB.js</h1>
-        <h2>Enter password:</h2>
+      <div id="user_authentication" class="row">
+        <h1 class="text-center">Welcome to eOSB.js</h1>
+        <h2 class="text-center">Enter password:</h2>
         <p id="password_error">Try again!</p>
-        <input id="password" type="password" autofocus>
-        <button id="submit">Submit</button>
-
+        <input id="password" class="center-block" type="password" autofocus>
+        <button id="submit" class="center-block">Submit</button>
       </div>
 
-      <div id="round_selection">
-        <h2>Select a round:</h2>
-        <button id="round_1" class="round_button" type="button" autofocus>Round 1</button>
-        <button id="round_2" class="round_button" type="button">Round 2</button>
-        <button id="round_3" class="round_button" type="button">Round 3</button>
-        <button id="round_4" class="round_button" type="button">Round 4</button>
-        <button id="round_5" class="round_button" type="button">Round 5</button>
-        <button id="round_6" class="round_button" type="button">Round 6</button>
-        <button id="round_7" class="round_button" type="button">Round 7</button>
-        <button id="round_8" class="round_button" type="button">Round 8</button>
-        <button id="round_9" class="round_button" type="button">Round 9</button>
-        <button id="round_10" class="round_button" type="button">Round 10</button>
-        <button id="round_11" class="round_button" type="button">Round 11</button>
+      <div id="round_selection" class="row">
+        <h2 class="text-center">Select a round:</h2>
+        <button id="round_1" class="round_button col-xs-4" type="button">Round 1</button>
+        <button id="round_2" class="round_button col-xs-4" type="button">Round 2</button>
+        <button id="round_3" class="round_button col-xs-4" type="button">Round 3</button>
+        <button id="round_4" class="round_button col-xs-4" type="button">Round 4</button>
+        <button id="round_5" class="round_button col-xs-4" type="button">Round 5</button>
+        <button id="round_6" class="round_button col-xs-4" type="button">Round 6</button>
+        <button id="round_7" class="round_button col-xs-4" type="button">Round 7</button>
+        <button id="round_8" class="round_button col-xs-4" type="button">Round 8</button>
+        <button id="round_9" class="round_button col-xs-4" type="button">Round 9</button>
+        <button id="round_10" class="round_button col-xs-4" type="button">Round 10</button>
+        <button id="round_11" class="round_button col-xs-4" type="button">Round 11</button>
       </div>
 
-      <div id="round_over">round over! <a id="choose_another">choose another by clicking here</a></div>
+      <div id="round_over">round over! <button id="choose_another" type="button">choose another</button></div>
 
       <div id="tcq_selection">
         <button id="tcq_a" type="button">Open TCQ A</button>
@@ -42,13 +42,12 @@
         <button id="hide_tcq" type="button">Close TCQ</button>
       </div>
 
-      <div id="question">
-        <div id="prompt">
+      <div id="question" class="row">
+        <div id="prompt" class="col-xs-8">
           <div id="tcq">
             <button id="show_tcq">Show TCQs</button>
           </div>
 
-          <br />
           <span id="question_type"></span>
           <span id="question_number"></span>
           
@@ -71,22 +70,23 @@
           </div>
         </div>
 
-        <div id="answer">
+        <div id="answer" class="col-xs-4">
           <div>Correct Answer</div>
           <div id="question_answer"></div>
         </div>
       </div>
 
-      <div id="inputs">
-          <button id="prev" type="button"><img src="./images/back_arrow.png" /></button>
-          <button id="next_question" type="button"><img src="./images/red_x.png" /></button>
-          <button id="next_tossup" type="button"><img src="./images/forward_arrow.png" /></button>
-        </div>
+      <div id="inputs" class="row">
+        <button id="prev" class="col-xs-4" type="button"><img src="./images/back_arrow.png" /></button>
+        <button id="next_question" class="col-xs-4" type="button"><img src="./images/red_x.png" /></button>
+        <button id="next_tossup" class="col-xs-4" type="button"><img src="./images/forward_arrow.png" /></button>
+      </div>
     </div>
   </body>
 
+  <script>window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');</script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script>
-    // You can also require other files to run in this process
     require('./renderer.js')
   </script>
 </html>

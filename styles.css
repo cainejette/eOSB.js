@@ -21,14 +21,21 @@
   width: 400px;
 }
 
+#question {
+  background: purple;
+  width: 100%
+}
+
 #prompt {
   position: absolute;
+  background: red;
   left: 0;
   top: 0;
 }
 
 #answer {
   position: absolute;
+  background: blue;
   right: 0;
   top: 0;
 }
@@ -36,19 +43,10 @@
 #inputs {
   position: fixed;
   bottom: 0;
+  width: 100%;
+  height: 75px;
 }
 
-#next_question {
-  height: 100px;
-  width: 300px;
-}
-
-#next_tossup {
-  height: 100px;
-  width: 300px;
-}
-
-#prev {
-  height: 100px;
-  width: 300px;
+#inputs > button {
+  height: 100%;
 }
