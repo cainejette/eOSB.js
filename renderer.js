@@ -113,9 +113,13 @@ function update_question(new_question_number) {
 
   if (question_number < 40) {
     question = round.Question[question_number];
+    
+    document.querySelector('#question_type').textContent = question.QuestionType[0];
     document.querySelector('#question_number').textContent = question.QuestionPair[0];
+    document.querySelector('#question_format').textContent = question.QuestionFormat[0].toLowerCase();
 
-    if (question.QuestionFormat[0] === 'Multiple Choice') {
+    document.querySelector('#question_text').textContent = question.QuestionText[0];
+    if (question.QuestionFormat[0].toLowerCase() === 'multiple choice') {
       document.querySelector('#question_choices').setAttribute('style', 'display: visible');
       document.querySelector('#option_w').textContent = question.AnswerW[0];
       document.querySelector('#option_x').textContent = question.AnswerX[0];
@@ -125,9 +129,7 @@ function update_question(new_question_number) {
       document.querySelector('#question_choices').setAttribute('style', 'display: none');
     }
 
-    document.querySelector('#question_format').textContent = question.QuestionFormat[0];
-    document.querySelector('#question_type').textContent = question.QuestionType[0];
-    document.querySelector('#question_text').textContent = question.QuestionText[0];
+    
     document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
   }
 }
