@@ -9,7 +9,7 @@
 #password {
   height: 80px;
   width: 400px;
-  margin-top: 150px;
+  margin-top: 120px;
   text-align: center;
 }
 
@@ -19,6 +19,12 @@
 
 #password_error {
   color: red;
+  margin-top: 15px;
+}
+
+#round_selection {
+  width: 100%;
+  text-align: center;
 }
 
 .round_button {

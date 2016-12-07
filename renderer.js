@@ -17,7 +17,7 @@ let rounds = require('./questions/info.json');
 function build_round_buttons() {
   var div = document.createElement('div');
   div.id = "rounds";
-  document.querySelector('#round_selection').appendChild(div);
+  document.querySelector('#round_list_hook').appendChild(div);
 
   rounds.forEach(round => {
     var button = document.createElement('button');
@@ -26,7 +26,6 @@ function build_round_buttons() {
     button.setAttribute('type', 'button');
     button.textContent = round.name;
     button.addEventListener('click', () => open_round(round));
-
     document.querySelector('#rounds').appendChild(button);
   });
 }
@@ -89,6 +88,7 @@ function choose_round() {
 }
 
 function open_round(round) {
+  round_number = round.file.split('_')[1].split('.')[0];
   round.opened = true;
   fs.readFile(path.join(__dirname, 'questions', `/${round.file}`), function(err, data) {
     parser.parseString(data, function (err, result) {
