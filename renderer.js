@@ -80,7 +80,7 @@ function display_tcqs() {
 function choose_round() {
   document.querySelector('#rounds').remove();
   build_round_buttons();
-  
+
   document.querySelector('#round_selection').setAttribute('style', 'display: visible');
   document.querySelector('#user_authentication').setAttribute('style', 'display: none');
   document.querySelector('#question').setAttribute('style', 'display: none');
@@ -128,6 +128,13 @@ function update_question(new_question_number) {
     question = questions.Question[question_number];
     
     document.querySelector('#question_type').textContent = question.QuestionType[0];
+
+    if (question.QuestionType[0] == 'Bonus') {
+      document.querySelector('#question').setAttribute('style', 'background-color: lemonchiffon');
+    } else {
+      document.querySelector('#question').setAttribute('style', 'background-color: white');
+    }
+
     document.querySelector('#question_number').textContent = question.QuestionPair[0];
     document.querySelector('#question_format').textContent = question.QuestionFormat[0].toLowerCase();
 
