@@ -13,6 +13,10 @@
   text-align: center;
 }
 
+:disabled {
+  background-color: lightslategrey;
+}
+
 #password_error {
   color: red;
 }
