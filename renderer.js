@@ -6,23 +6,33 @@ const path = require('path');
 var ipcRenderer = require('electron').ipcRenderer
 const BrowserWindow = require('electron').remote.BrowserWindow
 
-let round;
+let questions;
 let round_number = 1;
 let question_number = 0;
 let question;
 let opened_tcq = false;
 
-document.querySelector('#round_1').addEventListener('click', () => open_round(1));
-document.querySelector('#round_2').addEventListener('click', () => open_round(2));
-document.querySelector('#round_3').addEventListener('click', () => open_round(3));
-document.querySelector('#round_4').addEventListener('click', () => open_round(4));
-document.querySelector('#round_5').addEventListener('click', () => open_round(5));
-document.querySelector('#round_6').addEventListener('click', () => open_round(6));
-document.querySelector('#round_7').addEventListener('click', () => open_round(7));
-document.querySelector('#round_8').addEventListener('click', () => open_round(8));
-document.querySelector('#round_9').addEventListener('click', () => open_round(9));
-document.querySelector('#round_10').addEventListener('click', () => open_round(10));
-document.querySelector('#round_11').addEventListener('click', () => open_round(11));
+let rounds = require('./questions/info.json');
+
+function build_round_buttons() {
+  var div = document.createElement('div');
+  div.id = "rounds";
+  document.querySelector('#round_selection').appendChild(div);
+
+  rounds.forEach(round => {
+    var button = document.createElement('button');
+    button.id = round.file.split('.')[0];
+    button.setAttribute('class', 'round_button col-xs-4 ' + (round.opened ? 'opened' : ''));
+    button.setAttribute('type', 'button');
+    button.textContent = round.name;
+    button.addEventListener('click', () => open_round(round));
+
+    document.querySelector('#rounds').appendChild(button);
+  });
+}
+
+build_round_buttons();
+
 document.querySelector('#tcq_a').addEventListener('click', () => open_tcq('a'));
 document.querySelector('#tcq_b').addEventListener('click', () => open_tcq('b'));
 document.querySelector('#tcq_a_solution').addEventListener('click', () => open_tcq('a_solutions'));
@@ -68,6 +78,9 @@ function display_tcqs() {
 }
 
 function choose_round() {
+  document.querySelector('#rounds').remove();
+  build_round_buttons();
+  
   document.querySelector('#round_selection').setAttribute('style', 'display: visible');
   document.querySelector('#user_authentication').setAttribute('style', 'display: none');
   document.querySelector('#question').setAttribute('style', 'display: none');
@@ -75,11 +88,11 @@ function choose_round() {
   document.querySelector('#round_over').setAttribute('style', 'display: none');
 }
 
-function open_round(new_round_number) {
-  round_number = new_round_number;
-  fs.readFile(path.join(__dirname, 'questions', `/round_${round_number}.xml`), function(err, data) {
+function open_round(round) {
+  round.opened = true;
+  fs.readFile(path.join(__dirname, 'questions', `/${round.file}`), function(err, data) {
     parser.parseString(data, function (err, result) {
-      round = result.Round.Questions[0];
+      questions = result.Round.Questions[0];
       document.querySelector('#question').setAttribute('style', 'display: visible');
       document.querySelector('#inputs').setAttribute('style', 'display: visible');
       document.querySelector('#round_selection').setAttribute('style', 'display: none');
@@ -112,7 +125,7 @@ function update_question(new_question_number) {
   update_tcq_button();
 
   if (question_number < 40) {
-    question = round.Question[question_number];
+    question = questions.Question[question_number];
     
     document.querySelector('#question_type').textContent = question.QuestionType[0];
     document.querySelector('#question_number').textContent = question.QuestionPair[0];
@@ -128,7 +141,6 @@ function update_question(new_question_number) {
     } else {
       document.querySelector('#question_choices').setAttribute('style', 'display: none');
     }
-
     
     document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
   }

@@ -21,6 +21,10 @@
   height: 100px;
 }
 
+.opened {
+  color: blue;
+}
+
 #submit {
   height: 80px;
   width: 400px;
