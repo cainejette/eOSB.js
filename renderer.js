@@ -182,8 +182,8 @@ function update_buttons(question_number) {
     document.querySelector('#prev').removeAttribute('disabled');
 
   (question_number % 2) 
-    ? document.querySelector('#prev').setAttribute('data-original-title', 'back to tossup ' + question.QuestionPair[0])
-    : document.querySelector('#prev').setAttribute('data-original-title', 'back to bonus ' + question.QuestionPair[0]);
+    ? document.querySelector('#prev').setAttribute('data-original-title', 'back to last tossup')
+    : document.querySelector('#prev').setAttribute('data-original-title', 'back to last bonus');
   }
 
   // disable forward buttons on last question
@@ -192,6 +192,8 @@ function update_buttons(question_number) {
     document.querySelector('#question').setAttribute('style', 'display: none');
     document.querySelector('#next_question').setAttribute('disabled', 'disabled');
     document.querySelector('#next_tossup').setAttribute('disabled', 'disabled');
+    document.querySelector('#next_question').removeAttribute('data-original-title');
+    document.querySelector('#next_tossup').removeAttribute('data-original-title');
   } else {
     document.querySelector('#round_over').setAttribute('style', 'display: none')
     document.querySelector('#question').setAttribute('style', 'display: visible');

@@ -2,7 +2,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-right: 3px solid black;
+  border-right: 4px solid black;
   height: 100vh;
 }
 
@@ -10,7 +10,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  border-left: 3x solid black;
+  border-left: 3px solid black;
   height: 100vh;
 }
 
@@ -28,6 +28,7 @@
 #inputs > label {
   height: 100%;
   background-color: beige;
+  border-color: black;
 }
 
 img {
@@ -38,4 +39,8 @@ img {
 
 :disabled {
   background-color: lightslategrey;
+}
+
+#prev, #next_question, #next_tossup {
+  padding: 10px;
 }
