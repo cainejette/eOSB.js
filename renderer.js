@@ -34,12 +34,7 @@ function build_round_buttons() {
     label.setAttribute('for', round.file.split('.')[0]);
     label.textContent = round.name;
     button.appendChild(label);
-
-    // button.id = round.file.split('.')[0];
-    // button.setAttribute('class', 'round_button col-xs-4 ' + (round.opened ? 'opened' : ''));
-    // button.setAttribute('type', 'button');
-    // button.textContent = round.name;
-    // button.addEventListener('click', () => open_round(round));
+    
     document.querySelector('#rounds').appendChild(button);
   });
 

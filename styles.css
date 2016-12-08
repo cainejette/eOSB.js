@@ -61,12 +61,16 @@
   position: absolute;
   left: 0;
   top: 0;
+  border-right: 2px solid black;
+  height: 100vh;
 }
 
 #answer {
   position: absolute;
   right: 0;
   top: 0;
+  border-left: 2px solid black;
+  height: 100vh;
 }
 
 #inputs {
@@ -81,40 +85,40 @@
 }
 
 #rounds {
-     list-style-type:none;
-     margin:25px 0 0 0;
-     padding:0;
+  list-style-type:none;
+  margin:25px 0 0 0;
+  padding:0;
 }
 
 #rounds li {
-    height:100px;
+  height:100px;
 }
 
 #rounds label, #rounds input {
-    display:block;
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
 }
 
 #rounds input[type="radio"] {
-    opacity:0.011;
-    z-index:100;
+  opacity:0.011;
+  z-index:100;
 }
 
 #rounds input[type="radio"]:checked + label {
-    background:lightblue;
+  background:lightblue;
 }
 
 #rounds label {
-     padding:5px;
-     border:1px solid #CCC; 
-     cursor:pointer;
-    z-index:90;
+  padding:5px;
+  border:1px solid #CCC; 
+  cursor:pointer;
+  z-index:90;
 }
 
 #rounds label:hover {
-     background:#DDD;
+  background:#DDD;
 }
