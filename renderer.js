@@ -42,7 +42,7 @@ function build_round_buttons() {
 }
 
 build_round_buttons();
-
+$('[data-toggle="tooltip"]').tooltip();
 document.querySelector('#tcq_a').addEventListener('click', () => open_tcq('a'));
 document.querySelector('#tcq_b').addEventListener('click', () => open_tcq('b'));
 document.querySelector('#tcq_a_solution').addEventListener('click', () => open_tcq('a_solutions'));
@@ -146,8 +146,10 @@ function update_question(new_question_number) {
 
     if (question.QuestionType[0] == 'Bonus') {
       document.querySelector('#question').setAttribute('style', 'background-color: lemonchiffon');
+      document.querySelector('#next_tossup').setAttribute('data-original-title', 'to next tossup');
     } else {
       document.querySelector('#question').setAttribute('style', 'background-color: white');
+      document.querySelector('#next_tossup').setAttribute('data-original-title', 'to the bonus')
     }
 
     document.querySelector('#question_number').textContent = question.QuestionPair[0];
@@ -165,6 +167,8 @@ function update_question(new_question_number) {
     }
     
     document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
+
+    
   }
 }
 
@@ -172,9 +176,14 @@ function update_buttons(question_number) {
   // disable back button on first question
   if (question_number == 0) {
     document.querySelector('#prev').setAttribute('disabled', 'disabled');
+    document.querySelector('#prev').removeAttribute('data-original-title');
   }
   else {
     document.querySelector('#prev').removeAttribute('disabled');
+
+  (question_number % 2) 
+    ? document.querySelector('#prev').setAttribute('data-original-title', 'back to tossup ' + question.QuestionPair[0])
+    : document.querySelector('#prev').setAttribute('data-original-title', 'back to bonus ' + question.QuestionPair[0]);
   }
 
   // disable forward buttons on last question
