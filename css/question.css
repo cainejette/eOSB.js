@@ -31,16 +31,16 @@
   border-color: black;
 }
 
-img {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 :disabled {
   background-color: lightslategrey;
 }
 
 #prev, #next_question, #next_tossup {
   padding: 10px;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
