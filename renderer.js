@@ -15,19 +15,35 @@ let opened_tcq = false;
 let rounds = require('./questions/info.json');
 
 function build_round_buttons() {
-  var div = document.createElement('div');
+  var div = document.createElement('ul');
   div.id = "rounds";
+  div.setAttribute('class', 'row');
   document.querySelector('#round_list_hook').appendChild(div);
 
   rounds.forEach(round => {
-    var button = document.createElement('button');
-    button.id = round.file.split('.')[0];
+    var button = document.createElement('li');
     button.setAttribute('class', 'round_button col-xs-4 ' + (round.opened ? 'opened' : ''));
-    button.setAttribute('type', 'button');
-    button.textContent = round.name;
-    button.addEventListener('click', () => open_round(round));
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'radio')
+    input.setAttribute('name', 'rounds');
+    input.id = round.file.split('.')[0];
+    button.appendChild(input);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', round.file.split('.')[0]);
+    label.textContent = round.name;
+    button.appendChild(label);
+
+    // button.id = round.file.split('.')[0];
+    // button.setAttribute('class', 'round_button col-xs-4 ' + (round.opened ? 'opened' : ''));
+    // button.setAttribute('type', 'button');
+    // button.textContent = round.name;
+    // button.addEventListener('click', () => open_round(round));
     document.querySelector('#rounds').appendChild(button);
   });
+
+  document.querySelector('#open_round_button').addEventListener('click', () => open_round());
 }
 
 build_round_buttons();
@@ -56,11 +72,9 @@ document.querySelector('#round_over').setAttribute('style', 'display: none');
 
 function check_password(e) {
   if (e == undefined || e.keyCode == 13) {
-    if (document.querySelector('#password').value === "asdf") {
-      console.log('right');
+    if (document.querySelector('#password').value === "") {
       choose_round();
     } else {
-      console.log('wrong');
       document.querySelector('#password').value = '';
       document.querySelector('#password').focus();
       document.querySelector('#password_error').setAttribute('style', 'display: visible');
@@ -87,7 +101,13 @@ function choose_round() {
   document.querySelector('#round_over').setAttribute('style', 'display: none');
 }
 
-function open_round(round) {
+function open_round() {
+  var round_id = document.querySelector('input[name = "rounds"]:checked').getAttribute('id');
+  var round = rounds.find(x => x.file.indexOf(round_id) != -1);
+  if (round) {
+    round.opened = true;
+  }
+
   round_number = round.file.split('_')[1].split('.')[0];
   round.opened = true;
   fs.readFile(path.join(__dirname, 'questions', `/${round.file}`), function(err, data) {
