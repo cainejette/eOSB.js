@@ -56,8 +56,6 @@ document.querySelector('#choose_another').addEventListener('click', () => choose
 document.querySelector('#password').addEventListener('keydown', (e) => check_password(e));
 document.querySelector('#submit').addEventListener('click', () => check_password());
 
-document.querySelector('#show_tcq').addEventListener('click', () => display_tcqs());
-
 document.querySelector('#password_error').setAttribute('style', 'display: none');
 document.querySelector('#round_selection').setAttribute('style', 'display: none');
 document.querySelector('#tcq_selection').setAttribute('style', 'display: none');
@@ -125,50 +123,43 @@ function next_tossup() {
   }
 }
 
-function update_tcq_button() {
-  if (question_number == 20 && !opened_tcq) {
-    document.querySelector('#tcq').setAttribute('style', 'display: visible');
-  } else {
-    document.querySelector('#tcq').setAttribute('style', 'display: none');
-  }
-}
-
 function update_question(new_question_number) {
   question_number = new_question_number;
 
   update_buttons(question_number);
-  update_tcq_button();
 
-  if (question_number < 40) {
-    question = questions.Question[question_number];
-    
-    document.querySelector('#question_type').textContent = question.QuestionType[0];
+  if (question_number == 20 && !opened_tcq) {
+    display_tcqs();
+  } else {
+    if (question_number < 40) {
+      question = questions.Question[question_number];
+      
+      document.querySelector('#question_type').textContent = question.QuestionType[0].toLowerCase();
 
-    if (question.QuestionType[0] == 'Bonus') {
-      document.querySelector('#question').setAttribute('style', 'background-color: lemonchiffon');
-      document.querySelector('#next_tossup').setAttribute('data-original-title', 'to next tossup');
-    } else {
-      document.querySelector('#question').setAttribute('style', 'background-color: white');
-      document.querySelector('#next_tossup').setAttribute('data-original-title', 'to the bonus')
+      if (question.QuestionType[0] == 'Bonus') {
+        document.querySelector('#question').setAttribute('style', 'background-color: lemonchiffon');
+        document.querySelector('#next_tossup').setAttribute('data-original-title', 'to next tossup');
+      } else {
+        document.querySelector('#question').setAttribute('style', 'background-color: white');
+        document.querySelector('#next_tossup').setAttribute('data-original-title', 'to the bonus')
+      }
+
+      document.querySelector('#question_number').textContent = question.QuestionPair[0];
+      document.querySelector('#question_format').textContent = question.QuestionFormat[0].toLowerCase();
+
+      document.querySelector('#question_text').textContent = question.QuestionText[0];
+      if (question.QuestionFormat[0].toLowerCase() === 'multiple choice') {
+        document.querySelector('#question_choices').setAttribute('style', 'display: visible');
+        document.querySelector('#option_w').textContent = question.AnswerW[0];
+        document.querySelector('#option_x').textContent = question.AnswerX[0];
+        document.querySelector('#option_y').textContent = question.AnswerY[0];
+        document.querySelector('#option_z').textContent = question.AnswerZ[0];
+      } else {
+        document.querySelector('#question_choices').setAttribute('style', 'display: none');
+      }
+      
+      document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
     }
-
-    document.querySelector('#question_number').textContent = question.QuestionPair[0];
-    document.querySelector('#question_format').textContent = question.QuestionFormat[0].toLowerCase();
-
-    document.querySelector('#question_text').textContent = question.QuestionText[0];
-    if (question.QuestionFormat[0].toLowerCase() === 'multiple choice') {
-      document.querySelector('#question_choices').setAttribute('style', 'display: visible');
-      document.querySelector('#option_w').textContent = question.AnswerW[0];
-      document.querySelector('#option_x').textContent = question.AnswerX[0];
-      document.querySelector('#option_y').textContent = question.AnswerY[0];
-      document.querySelector('#option_z').textContent = question.AnswerZ[0];
-    } else {
-      document.querySelector('#question_choices').setAttribute('style', 'display: none');
-    }
-    
-    document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
-
-    
   }
 }
 
@@ -204,7 +195,6 @@ function update_buttons(question_number) {
 
 function hide_tcq() {
   ipcRenderer.send('hide_tcq');
-  update_tcq_button();
   document.querySelector('#question').setAttribute('style', 'display: visible');
   document.querySelector('#inputs').setAttribute('style', 'display: visible');
   document.querySelector('#tcq_selection').setAttribute('style', 'display: none');
