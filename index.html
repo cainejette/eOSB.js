@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>eOSB</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user_authentication.css">
+    <link rel="stylesheet" href="css/round_selection.css">
+    <link rel="stylesheet" href="css/question.css">
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
@@ -53,32 +56,31 @@
           <span id="question_number"></span>
           <span>is</span>
           <strong><span id="question_format"></span></strong>
-          <span>-</span>
 
-          <div id="question_text"></div>
+          <div id="question_text" class="top_line"></div>
 
           <br />
           <div id="question_choices">
             <div>W</div>
-            <div id="option_w"></div>
+            <div id="option_w" class="top_line"></div>
             <br />
 
             <div>X</div>
-            <div id="option_x"></div>
+            <div id="option_x" class="top_line"></div>
             <br />
 
             <div>Y</div>
-            <div id="option_y"></div>
+            <div id="option_y" class="top_line"></div>
             <br />
 
             <div>Z</div>
-            <div id="option_z"></div>
+            <div id="option_z" class="top_line"></div>
           </div>
         </div>
 
         <div id="answer" class="col-xs-4">
           <div><strong>Correct Answer</strong></div>
-          <div id="question_answer"></div>
+          <div id="question_answer" class="top_line"></div>
         </div>
       </div>
 
