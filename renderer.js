@@ -33,14 +33,13 @@ function build_round_buttons() {
     input.setAttribute('type', 'radio')
     input.setAttribute('name', 'rounds');
     input.id = round.file.split('.')[0];
+    input.addEventListener('click', () => enable_open_round_button());
     button.appendChild(input);
 
     var label = document.createElement('label');
     label.setAttribute('for', round.file.split('.')[0]);
     label.textContent = round.name;
     button.appendChild(label);
-
-    button.addEventListener('click', () => enable_open_round_button());
     
     document.querySelector('#rounds').appendChild(button);
   });
