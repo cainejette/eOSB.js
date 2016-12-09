@@ -2,6 +2,7 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = require('electron').ipcMain;
+const Menu = electron.Menu;
 
 const path = require('path');
 const url = require('url');
@@ -13,6 +14,38 @@ let tcqWindow;
 
 function createWindow () {
   mainWindow = new BrowserWindow({width: 1200, height: 800});
+
+  const menuTemplate = [
+    {
+      label: 'eOSB',
+      submenu: [
+        {
+          label: 'Quit',
+          click: () => {
+            app.quit();
+          }
+        }
+      ]
+    },
+    {
+      label: 'Options',
+      submenu: [
+        {
+          label: 'Font Size',
+          submenu: [
+            {
+              label: '16 point'
+            }, {
+              label: '20 point'
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

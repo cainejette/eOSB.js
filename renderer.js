@@ -30,18 +30,14 @@ function build_round_buttons() {
     button.setAttribute('class', 'round_button col-xs-4 btn btn-primary' + (round.opened ? ' opened' : ''));
     button.textContent = round.name;
 
+    
     var input = document.createElement('input');
+    input.id = round.file.split('.')[0];
     input.setAttribute('type', 'radio')
     input.setAttribute('name', 'rounds');
-    input.id = round.file.split('.')[0];
     input.addEventListener('click', () => enable_open_round_button());
     input.textContent = round.name;
     button.appendChild(input);
-
-    var label = document.createElement('label');
-    label.setAttribute('for', round.file.split('.')[0]);
-    label.textContent = round.name;
-    // button.appendChild(label);
     
     document.querySelector('#rounds').appendChild(button);
   });
