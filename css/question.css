@@ -57,14 +57,38 @@
   font-size: 20px;
 }
 
-.extra-large h1 {
-  font-size: 48px;
+.medium h1 {
+  font-size: 36px;
 }
 
-.extra-large h2 {
+.medium h2 {
+  font-size: 30px;
+}
+
+.medium h3 {
+  font-size: 24px;
+}
+
+.large h1 {
   font-size: 42px;
 }
 
+.large h2 {
+  font-size: 36px;
+}
+
+.large h3 {
+  font-size: 30px;
+}
+
+.extra-large h1 {
+  font-size: 52px;
+}
+
+.extra-large h2 {
+  font-size: 46px;
+}
+
 .extra-large h3 {
-  font-size: 32px;
+  font-size: 38px;
 }
