@@ -7,6 +7,11 @@
   height: 100px;
 }
 
+button:focus {
+  outline: none !important;
+}
+
+
 .opened {
   background-color: blue;
 }
@@ -30,7 +35,8 @@
 }
 
 #rounds li {
-  height:100px;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 #rounds label, #rounds input {
