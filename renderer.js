@@ -255,5 +255,5 @@ function open_tcq(tcq_name) {
 var ipcRenderer = require('electron').ipcRenderer
 
 ipcRenderer.on('set_font_size', (event, size) => {
-  console.log(size);
+  document.querySelector('#content').setAttribute('class', 'container-fluid ' + size);
 });

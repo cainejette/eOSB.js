@@ -44,3 +44,27 @@
     height: 100%;
     vertical-align: middle;
 }
+
+.small h1 {
+  font-size: 28px;
+}
+
+.small h2 {
+  font-size: 24px;
+}
+
+.small h3 {
+  font-size: 20px;
+}
+
+.extra-large h1 {
+  font-size: 48px;
+}
+
+.extra-large h2 {
+  font-size: 42px;
+}
+
+.extra-large h3 {
+  font-size: 32px;
+}
