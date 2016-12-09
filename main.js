@@ -34,9 +34,25 @@ function createWindow () {
           label: 'Font Size',
           submenu: [
             {
-              label: '16 point'
+              label: 'small',
+              click: () => {
+                set_font_size('small');
+              }
             }, {
-              label: '20 point'
+              label: 'medium',
+              click: () => {
+                set_font_size('medium');
+              }
+            }, {
+              label: 'large',
+              click: () => {
+                set_font_size('large');
+              }
+            }, {
+              label: 'extra large',
+              click: () => {
+                set_font_size('extra-large');
+              }
             }
           ]
         }
@@ -111,3 +127,6 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+function set_font_size(size) {
+  mainWindow.webContents.send('set_font_size', size);
+}

@@ -251,3 +251,9 @@ function hide_tcq() {
 function open_tcq(tcq_name) {
   ipcRenderer.send('show_tcq', `./questions/tcq_${round_number}_${tcq_name}.pdf`);
 };
+
+var ipcRenderer = require('electron').ipcRenderer
+
+ipcRenderer.on('set_font_size', (event, size) => {
+  console.log(size);
+});
