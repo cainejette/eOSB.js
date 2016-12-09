@@ -71,7 +71,6 @@ function create_open_round_button() {
 }
 
 function enable_open_round_button() {
-  console.log('adding event listener');
   document.querySelector('#open_round_button').removeAttribute('disabled');
   document.querySelector('#open_round_button').addEventListener('click', () => open_round());
 }
@@ -86,7 +85,7 @@ document.querySelector('#hide_tcq').addEventListener('click', () => hide_tcq());
 document.querySelector('#prev').addEventListener('click', () => update_question(question_number - 1));
 document.querySelector('#next_question').addEventListener('click', () => next_tossup());
 document.querySelector('#next_tossup').addEventListener('click', () => update_question(question_number + 1));
-document.querySelector('#choose_another').addEventListener('click', () => choose_round());
+document.querySelector('#choose_another').addEventListener('click', () => show_user_validation());
 
 document.querySelector('#password').addEventListener('keydown', (e) => check_password(e));
 document.querySelector('#submit').addEventListener('click', () => check_password());
@@ -98,6 +97,12 @@ document.querySelector('#question').setAttribute('style', 'display: none');
 document.querySelector('#inputs').setAttribute('style', 'display: none');
 document.querySelector('#round_over').setAttribute('style', 'display: none');
 document.querySelector('#round_preamble').setAttribute('style', 'display: none');
+
+function show_user_validation() {
+  document.querySelector('#user_authentication').setAttribute('style', 'display: visible');
+  document.querySelector('#round_over').setAttribute('style', 'display: none');
+  document.querySelector('#inputs').setAttribute('style', 'display: none');
+}
 
 function check_password(e) {
   if (e == undefined || e.keyCode == 13) {
@@ -168,16 +173,12 @@ function next_tossup() {
 }
 
 function update_question(new_question_number) {
-  console.log(new_question_number);
   if (new_question_number > -1 && new_question_number < 41) {
     question_number = new_question_number;
-
-    console.log('calling update question with new quesiton number: ' + question_number);
     update_buttons(question_number);
 
     if (question_number < 40) {
       question = questions.Question[question_number];
-      
       document.querySelector('#question_type').textContent = question.QuestionType[0].toLowerCase();
 
       if (question.QuestionType[0] == 'Bonus') {
@@ -209,7 +210,7 @@ function update_question(new_question_number) {
       if (question_number == 20 && !opened_tcq) {
         display_tcqs();
       }
-    } 
+    }
   }
 }
 
