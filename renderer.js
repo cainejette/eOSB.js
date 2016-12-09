@@ -16,10 +16,14 @@ let round;
 let rounds = require('./questions/info.json');
 
 function build_round_buttons() {
+  document.querySelector('#open_round').remove();
+
   var div = document.createElement('ul');
   div.id = "rounds";
   div.setAttribute('class', 'row');
   document.querySelector('#round_list_hook').appendChild(div);
+
+  create_open_round_button();
 
   rounds.forEach(round => {
     var button = document.createElement('li');
@@ -35,10 +39,40 @@ function build_round_buttons() {
     label.setAttribute('for', round.file.split('.')[0]);
     label.textContent = round.name;
     button.appendChild(label);
+
+    button.addEventListener('click', () => enable_open_round_button());
     
     document.querySelector('#rounds').appendChild(button);
   });
+}
 
+function create_open_round_button() {
+  var open_button = document.createElement('div');
+  open_button.id = 'open_round';
+  open_button.setAttribute('class', 'row');
+  
+  var label = document.createElement('label');
+  label.id = 'open_round_button';
+  label.setAttribute('class', 'col-xs-4 col-xs-offset-4 btn btn-primary');
+  label.setAttribute('disabled', 'disabled');
+  label.setAttribute('type', 'button')
+
+  var span = document.createElement('span');
+  span.setAttribute('class', 'helper');
+  label.appendChild(span);
+
+  var img = document.createElement('img');
+  img.setAttribute('src', './images/forward_arrow.png');
+  label.appendChild(img);
+
+  open_button.appendChild(label);
+
+  document.querySelector('#round_selection').appendChild(open_button);
+}
+
+function enable_open_round_button() {
+  console.log('adding event listener');
+  document.querySelector('#open_round_button').removeAttribute('disabled');
   document.querySelector('#open_round_button').addEventListener('click', () => open_round());
 }
 
@@ -98,7 +132,7 @@ function choose_round() {
 }
 
 function open_round() {
-  var round_id = document.querySelector('input[name = "rounds"]:checked').getAttribute('id');
+  let round_id = document.querySelector('input[name = "rounds"]:checked').getAttribute('id');
   round = rounds.find(x => x.file.indexOf(round_id) != -1);
   if (round) {
     round.opened = true;
