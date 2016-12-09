@@ -83,9 +83,9 @@ document.querySelector('#tcq_b').addEventListener('click', () => open_tcq('b'));
 document.querySelector('#tcq_a_solution').addEventListener('click', () => open_tcq('a_solutions'));
 document.querySelector('#tcq_b_solution').addEventListener('click', () => open_tcq('b_solutions'));
 document.querySelector('#hide_tcq').addEventListener('click', () => hide_tcq());
-document.querySelector('#prev').addEventListener('click', () => update_question(--question_number));
+document.querySelector('#prev').addEventListener('click', () => update_question(question_number - 1));
 document.querySelector('#next_question').addEventListener('click', () => next_tossup());
-document.querySelector('#next_tossup').addEventListener('click', () => update_question(++question_number));
+document.querySelector('#next_tossup').addEventListener('click', () => update_question(question_number + 1));
 document.querySelector('#choose_another').addEventListener('click', () => choose_round());
 
 document.querySelector('#password').addEventListener('keydown', (e) => check_password(e));
@@ -168,44 +168,48 @@ function next_tossup() {
 }
 
 function update_question(new_question_number) {
-  question_number = new_question_number;
+  console.log(new_question_number);
+  if (new_question_number > -1 && new_question_number < 41) {
+    question_number = new_question_number;
 
-  update_buttons(question_number);
+    console.log('calling update question with new quesiton number: ' + question_number);
+    update_buttons(question_number);
 
-  if (question_number < 40) {
-    question = questions.Question[question_number];
-    
-    document.querySelector('#question_type').textContent = question.QuestionType[0].toLowerCase();
+    if (question_number < 40) {
+      question = questions.Question[question_number];
+      
+      document.querySelector('#question_type').textContent = question.QuestionType[0].toLowerCase();
 
-    if (question.QuestionType[0] == 'Bonus') {
-      document.querySelector('#question').setAttribute('style', 'background-color: lemonchiffon');
-      document.querySelector('#next_tossup').setAttribute('data-original-title', 'to next tossup');
-    } else {
-      document.querySelector('#question').setAttribute('style', 'background-color: white');
-      document.querySelector('#next_tossup').setAttribute('data-original-title', 'to the bonus')
-    }
+      if (question.QuestionType[0] == 'Bonus') {
+        document.querySelector('#prompt').setAttribute('style', 'background-color: lemonchiffon');
+        document.querySelector('#answer').setAttribute('style', 'background-color: lemonchiffon');
+        document.querySelector('#next_tossup').setAttribute('data-original-title', 'to next tossup');
+      } else {
+        document.querySelector('#prompt').setAttribute('style', 'background-color: white');
+        document.querySelector('#answer').setAttribute('style', 'background-color: white');
+        document.querySelector('#next_tossup').setAttribute('data-original-title', 'to the bonus')
+      }
 
-    document.querySelector('#question_number').textContent = question.QuestionPair[0];
-    document.querySelector('#question_format').textContent = question.QuestionFormat[0].toLowerCase();
+      document.querySelector('#question_number').textContent = question.QuestionPair[0];
+      document.querySelector('#question_format').textContent = question.QuestionFormat[0].toLowerCase();
 
-    document.querySelector('#question_text').textContent = question.QuestionText[0];
-    if (question.QuestionFormat[0].toLowerCase() === 'multiple choice') {
-      document.querySelector('#question_choices').setAttribute('style', 'display: visible');
-      document.querySelector('#option_w').textContent = question.AnswerW[0];
-      document.querySelector('#option_x').textContent = question.AnswerX[0];
-      document.querySelector('#option_y').textContent = question.AnswerY[0];
-      document.querySelector('#option_z').textContent = question.AnswerZ[0];
-    } else {
-      document.querySelector('#question_choices').setAttribute('style', 'display: none');
-    }
-    
-    document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
+      document.querySelector('#question_text').textContent = question.QuestionText[0];
+      if (question.QuestionFormat[0].toLowerCase() === 'multiple choice') {
+        document.querySelector('#question_choices').setAttribute('style', 'display: visible');
+        document.querySelector('#option_w').textContent = question.AnswerW[0];
+        document.querySelector('#option_x').textContent = question.AnswerX[0];
+        document.querySelector('#option_y').textContent = question.AnswerY[0];
+        document.querySelector('#option_z').textContent = question.AnswerZ[0];
+      } else {
+        document.querySelector('#question_choices').setAttribute('style', 'display: none');
+      }
+      
+      document.querySelector('#question_answer').textContent = question.CorrectAnswer[0];
 
-    if (question_number == 20 && !opened_tcq) {
-      display_tcqs();
-    }
-  } else {
-
+      if (question_number == 20 && !opened_tcq) {
+        display_tcqs();
+      }
+    } 
   }
 }
 
@@ -227,8 +231,8 @@ function update_buttons(question_number) {
   if (question_number == 40) {
     document.querySelector('#round_over').setAttribute('style', 'display: visible');
     document.querySelector('#question').setAttribute('style', 'display: none');
-    document.querySelector('#next_question').setAttribute('disabled', 'disabled');
-    document.querySelector('#next_tossup').setAttribute('disabled', 'disabled');
+    document.querySelector('#next_question').setAttribute('disabled', 'true');
+    document.querySelector('#next_tossup').setAttribute('disabled', 'true');
     document.querySelector('#next_question').removeAttribute('data-original-title');
     document.querySelector('#next_tossup').removeAttribute('data-original-title');
   } else {
