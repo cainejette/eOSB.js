@@ -57,6 +57,10 @@
   font-size: 20px;
 }
 
+.small p, .small div {
+  font-size: 10px;
+}
+
 .medium h1 {
   font-size: 36px;
 }
@@ -67,6 +71,10 @@
 
 .medium h3 {
   font-size: 24px;
+}
+
+.medium p, .medium div {
+  font-size: 14px;
 }
 
 .large h1 {
@@ -81,6 +89,10 @@
   font-size: 30px;
 }
 
+.large p, .large div {
+  font-size: 18px;
+}
+
 .extra-large h1 {
   font-size: 52px;
 }
@@ -91,4 +103,8 @@
 
 .extra-large h3 {
   font-size: 38px;
+}
+
+.extra-large p, .extra-large div {
+  font-size: 26px;
 }
