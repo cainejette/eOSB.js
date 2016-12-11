@@ -2,7 +2,7 @@
   "name": "eOSB.js",
   "version": "1.0.0",
   "description": "electronified eOSB",
-  "main": "main.js",
+  "main": "js/main.js",
   "scripts": {
     "start": "electron ."
   },

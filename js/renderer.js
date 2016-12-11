@@ -13,7 +13,7 @@ let question;
 let opened_tcq = false;
 
 let round;
-let rounds = require('./questions/info.json');
+let rounds = require('../questions/info.json');
 
 function build_round_buttons() {
 
@@ -126,7 +126,7 @@ function open_round() {
 }
 
 function open_round_for_real() {
-  fs.readFile(path.join(__dirname, 'questions', `/${round.file}`), function(err, data) {
+  fs.readFile(path.join(__dirname, '../questions', `/${round.file}`), function(err, data) {
     parser.parseString(data, function (err, result) {
       questions = result.Round.Questions[0];
       document.querySelector('#question').setAttribute('style', 'display: visible');

@@ -70,7 +70,7 @@ function createWindow () {
   Menu.setApplicationMenu(menu);
 
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, '../index.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -94,7 +94,7 @@ function createWindow () {
   tcqWindow.maximize();
 
   tcqWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'tcq.html'),
+    pathname: path.join(__dirname, '../tcq.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -146,7 +146,7 @@ function open_set_team_names_dialog() {
   });
   teamNameWindow.center();
   teamNameWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'team_name.html'),
+    pathname: path.join(__dirname, '../team_name.html'),
     protocol: 'file:',
     slashes: true
   }));
