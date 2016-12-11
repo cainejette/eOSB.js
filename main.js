@@ -11,6 +11,7 @@ const url = require('url');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let tcqWindow;
+let teamNameWindow;
 
 function createWindow () {
   mainWindow = new BrowserWindow({width: 1200, height: 800});
@@ -55,6 +56,11 @@ function createWindow () {
               }
             }
           ]
+        }, {
+          'label': 'Set Team Names', 
+          'click': () => {
+            open_set_team_names_dialog();
+          }
         }
       ]
     }
@@ -129,4 +135,28 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 function set_font_size(size) {
   mainWindow.webContents.send('set_font_size', size);
+}
+
+function open_set_team_names_dialog() {
+  teamNameWindow = new BrowserWindow({
+    width: 800, 
+    height: 400,
+    parent: mainWindow,
+    modal: true
+  });
+  teamNameWindow.center();
+  teamNameWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'team_name.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  ipcMain.on('cancel_team_name_dialog', function() {
+    teamNameWindow.close();
+  });
+
+  ipcMain.on('close_team_name_dialog', function(evt, teamAName, teamBName) {
+    console.log(teamAName, teamBName);
+    teamNameWindow.close();
+  });
 }
