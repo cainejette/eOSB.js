@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>eOSB</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/user_authentication.css">
-    <link rel="stylesheet" href="css/round_selection.css">
-    <link rel="stylesheet" href="css/tcq_selection.css">
-    <link rel="stylesheet" href="css/question.css">
-    <link rel="stylesheet" href="css/round_over.css">
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/user_authentication.css">
+    <link rel="stylesheet" href="../css/round_selection.css">
+    <link rel="stylesheet" href="../css/tcq_selection.css">
+    <link rel="stylesheet" href="../css/question.css">
+    <link rel="stylesheet" href="../css/round_over.css">
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     <div id="content" class="container-fluid">
@@ -35,7 +35,7 @@
         </div>
         <div id="open_round" class="row">
           <label id="open_round_button" class="col-xs-4 col-xs-offset-4 btn btn-primary" type="button">
-            <span class="helper"></span><img src="./images/forward_arrow.png" />
+            <span class="helper"></span><img src="../images/forward_arrow.png" />
           </label>
 
 
@@ -88,7 +88,7 @@
 <p>Are we all ready? Judges? Teams?  First question . . .</p>
         
         <label id="open_round_button_for_real" class="col-xs-4 col-xs-offset-4 btn btn-primary" type="button">
-          <span class="helper"></span><img src="./images/forward_arrow.png" />
+          <span class="helper"></span><img src="../images/forward_arrow.png" />
         </label>
 
       </div>
@@ -149,21 +149,21 @@
 
       <div id="inputs" class="row">
         <label id="prev" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' type="button">
-          <span class="helper"></span><img src="./images/back_arrow.png" />
+          <span class="helper"></span><img src="../images/back_arrow.png" />
         </label>
         <label id="next_question" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' title="to next tossup" type="button">
-          <span class="helper"></span><img src="./images/red_x.png" />
+          <span class="helper"></span><img src="../images/red_x.png" />
         </label>
         <label id="next_tossup" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' type="button">
-          <span class="helper"></span><img src="./images/forward_arrow.png" />
+          <span class="helper"></span><img src="../images/forward_arrow.png" />
         </label>
       </div>
     </div>
   </body>
 
-  <script>window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');</script>
-  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min');</script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script>
-    require('./js/renderer.js')
+    require('../js/renderer.js')
   </script>
 </html>
