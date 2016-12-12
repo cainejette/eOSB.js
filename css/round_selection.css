@@ -11,7 +11,6 @@ button:focus {
   outline: none !important;
 }
 
-
 .opened {
   background-color: blue;
 }
