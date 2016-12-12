@@ -20,25 +20,31 @@ function build_round_buttons() {
 
   var div = document.createElement('ul');
   div.id = "rounds";
-  div.setAttribute('class', 'row');
+  div.setAttribute('class', 'row switch-field');
   document.querySelector('#round_list_hook').appendChild(div);
 
   document.querySelector('#open_round_button').addEventListener('click', () => open_round());
 
   rounds.forEach(round => {
-    var button = document.createElement('button');
-    button.setAttribute('class', 'round_button col-xs-4 btn btn-primary' + (round.opened ? ' opened' : ''));
-    button.textContent = round.name;
-    button.addEventListener('click', (evt) => set_checked(evt));
+    // var button = document.createElement('button');
+    // button.setAttribute('class', 'round_button col-xs-4 btn btn-primary' + (round.opened ? ' opened' : ''));
+    // button.textContent = round.name;
+    // button.addEventListener('click', (evt) => set_checked(evt));
     
     var input = document.createElement('input');
     input.id = round.file.split('.')[0];
     input.setAttribute('type', 'radio')
     input.setAttribute('name', 'rounds');
-    input.textContent = round.name;
-    button.appendChild(input);
+    // input.textContent = round.name;
+    div.appendChild(input);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', input.id);
+    label.setAttribute('class', 'col-xs-4');
+    label.textContent = round.name;
+    div.appendChild(label);
     
-    document.querySelector('#rounds').appendChild(button);
+    // document.querySelector('#rounds').appendChild(button);
   });
 }
 
@@ -117,7 +123,7 @@ function choose_round() {
 function open_round() {
   is_using_scoring = document.querySelector('input[name="scorekeeping"]').checked; 
 
-  let round_id = document.querySelector('button[checked="checked"] > input').getAttribute('id');
+  let round_id = document.querySelector('input:checked').getAttribute('id');
   round = rounds.find(x => x.file.indexOf(round_id) != -1);
   if (round) {
     round.opened = true;

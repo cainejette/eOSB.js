@@ -27,42 +27,6 @@ button:focus {
   height: 75px;
 }
 
-#rounds {
-  list-style-type:none;
-  margin:25px 0 0 0;
-  padding:0;
-}
-
-#rounds li {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#rounds label, #rounds input {
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-}
-
-#rounds input[type="radio"] {
-  opacity:0.011;
-  z-index:100;
-}
-
-#rounds input[type="radio"]:checked + label {
-  background:lightblue;
-}
-
 #rounds label {
-  padding:5px;
-  border:1px solid #CCC; 
-  cursor:pointer;
-  z-index:90;
-}
-
-#rounds label:hover {
-  background:#DDD;
+  height: 75px;
 }
