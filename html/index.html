@@ -29,10 +29,12 @@
         <div id="additional_options" class="row">
           <h3>Additional options:</h3>
           <div class="col-xs-12 center-block">
-            <input type="checkbox" name="scorekeeping">Scorekeeping
+            <input type="checkbox" name="scorekeeping">
+            <label for="scorekeeping">Scorekeeping</label>
           </div>
           <div class="col-xs-12 center-block">
-            <input type="checkbox" name="timekeeping">Timekeeping
+            <input type="checkbox" name="timekeeping">
+            <label for="timekeeping">Timekeeping</label>
           </div>
         </div>
         <div id="open_round" class="row">
@@ -64,7 +66,6 @@
         <p>15. If a player or team receives two (2) official warnings throughout the entirety of the competition, that player or team will be disqualified from competing and will only be permitted to observe the competition.</p>
         <p>16. If an audience member receives two (2) official warnings they will not be permitted to observe or participate in the competition activities for the remainder of the event.</p>
         <p>Are we all ready? Judges? Teams?  First question . . .</p>
-        
         <label id="open_round_button_for_real" class="col-xs-4 col-xs-offset-4 btn btn-primary" type="button">
           <span class="helper"></span><img src="../images/forward_arrow.png" />
         </label>
@@ -93,23 +94,18 @@
           <span id="question_number"></span>
           <span>is</span>
           <strong><span id="question_format"></span></strong>
-
           <div id="question_text" class="top_line"></div>
-
           <br />
           <div id="question_choices">
             <div>W</div>
             <div id="option_w" class="top_line"></div>
             <br />
-
             <div>X</div>
             <div id="option_x" class="top_line"></div>
             <br />
-
             <div>Y</div>
             <div id="option_y" class="top_line"></div>
             <br />
-
             <div>Z</div>
             <div id="option_z" class="top_line"></div>
           </div>
@@ -122,6 +118,64 @@
       </div>
 
       <div id="inputs" class="row">
+        <label id="prev" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' type="button">
+          <span class="helper"></span><img src="../images/back_arrow.png" />
+        </label>
+        <label id="next_question" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' title="to next tossup" type="button">
+          <span class="helper"></span><img src="../images/red_x.png" />
+        </label>
+        <label id="next_tossup" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' type="button">
+          <span class="helper"></span><img src="../images/forward_arrow.png" />
+        </label>
+      </div>
+
+      <div id="inputs_scoring" class="row">
+        <div id="team_a" class="col-xs-6">
+          <label id="team_a_correct" class="col-xs-4 btn btn-primary" type="button">
+            <span class="helper"></span>
+            <img src="../images/checkmark.png" />
+            <br />
+            <label>Correct <span class="correct_point_value"></span></label>
+          </label>
+          <label id="team_a_incorrect" class="col-xs-4 btn btn-primary" type="button">
+            <span class="helper"></span>
+            <img src="../images/red_x.png" />
+            <br />
+            <label>Incorrect <span class="incorrect_point_value"></span></label>
+          </label>
+          <label id="team_a_interrupt" class="col-xs-4 btn btn-primary" type="button">
+            <span class="helper"></span>
+            <img src="../images/red_x.png" />
+            <img src="../images/red_x.png" />
+            <img src="../images/red_x.png" />
+            <br />
+            <label>Interrupt <span class="interrupt_point_value"></span></label>
+          </label>
+        </div>
+
+        <div id="team_b" class="col-xs-6">
+          <label id="team_b_correct" class="col-xs-4 btn btn-primary" type="button">
+            <span class="helper"></span>
+            <img src="../images/checkmark.png" />
+            <br />
+            <label>Correct <span class="correct_point_value"></span></label>
+          </label>
+          <label id="team_b_incorrect" class="col-xs-4 btn btn-primary" type="button">
+            <span class="helper"></span>
+            <img src="../images/red_x.png" />
+            <br />
+            <label>Incorrect <span class="incorrect_point_value"></span></label>
+          </label>
+          <label id="team_b_interrupt" class="col-xs-4 btn btn-primary" type="button">
+            <span class="helper"></span>
+            <img src="../images/red_x.png" />
+            <img src="../images/red_x.png" />
+            <img src="../images/red_x.png" />
+            <br />
+            <label>Interrupt <span class="interrupt_point_value"></span></label>
+          </label>
+        </div>
+
         <label id="prev" class="col-xs-4 btn btn-primary" data-toggle="tooltip" data-delay='{"show":"800", "hide":"400"}' type="button">
           <span class="helper"></span><img src="../images/back_arrow.png" />
         </label>

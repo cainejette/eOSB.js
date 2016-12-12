@@ -11,6 +11,7 @@ let round_number = 1;
 let question_number = 0;
 let question;
 let opened_tcq = false;
+let is_using_scoring = false;
 
 let round;
 let rounds = require('../questions/info.json');
@@ -69,6 +70,7 @@ document.querySelector('#round_selection').setAttribute('style', 'display: none'
 document.querySelector('#tcq_selection').setAttribute('style', 'display: none');
 document.querySelector('#question').setAttribute('style', 'display: none');
 document.querySelector('#inputs').setAttribute('style', 'display: none');
+document.querySelector('#inputs_scoring').setAttribute('style', 'display: none');
 document.querySelector('#round_over').setAttribute('style', 'display: none');
 document.querySelector('#round_preamble').setAttribute('style', 'display: none');
 
@@ -76,6 +78,7 @@ function show_user_validation() {
   document.querySelector('#user_authentication').setAttribute('style', 'display: visible');
   document.querySelector('#round_over').setAttribute('style', 'display: none');
   document.querySelector('#inputs').setAttribute('style', 'display: none');
+  document.querySelector('#inputs_scoring').setAttribute('style', 'display: none');
 }
 
 function check_password(e) {
@@ -107,10 +110,13 @@ function choose_round() {
   document.querySelector('#user_authentication').setAttribute('style', 'display: none');
   document.querySelector('#question').setAttribute('style', 'display: none');
   document.querySelector('#inputs').setAttribute('style', 'display: none');
+  document.querySelector('#inputs_scoring').setAttribute('style', 'display: none');
   document.querySelector('#round_over').setAttribute('style', 'display: none');
 }
 
 function open_round() {
+  is_using_scoring = document.querySelector('input[name="scorekeeping"]').checked; 
+
   let round_id = document.querySelector('button[checked="checked"] > input').getAttribute('id');
   round = rounds.find(x => x.file.indexOf(round_id) != -1);
   if (round) {
@@ -130,7 +136,11 @@ function open_round_for_real() {
     parser.parseString(data, function (err, result) {
       questions = result.Round.Questions[0];
       document.querySelector('#question').setAttribute('style', 'display: visible');
-      document.querySelector('#inputs').setAttribute('style', 'display: visible');
+
+      is_using_scoring 
+        ? document.querySelector('#inputs_scoring').setAttribute('style', 'display: visible')
+        : document.querySelector('#inputs').setAttribute('style', 'display: visible'); 
+
       document.querySelector('#round_preamble').setAttribute('style', 'display: none');
       update_question(0);
     });
@@ -159,10 +169,34 @@ function update_question(new_question_number) {
         document.querySelector('#prompt').setAttribute('style', 'background-color: lemonchiffon');
         document.querySelector('#answer').setAttribute('style', 'background-color: lemonchiffon');
         document.querySelector('#next_tossup').setAttribute('data-original-title', 'to next tossup');
+
+        if (is_using_scoring) {
+          document.querySelectorAll('.correct_point_value').forEach(span => {
+            span.textContent = '(+10)';
+          });
+          document.querySelectorAll('.incorrect_point_value').forEach(span => {
+            span.textContent = '(+0)';
+          });
+          document.querySelectorAll('.interrupt_point_value').forEach(span => {
+            span.textContent = '(-0)';
+          });
+        }
       } else {
         document.querySelector('#prompt').setAttribute('style', 'background-color: white');
         document.querySelector('#answer').setAttribute('style', 'background-color: white');
         document.querySelector('#next_tossup').setAttribute('data-original-title', 'to the bonus')
+
+        if (is_using_scoring) {
+          document.querySelectorAll('.correct_point_value').forEach(span => {
+            span.textContent = '(+4)';
+          });
+          document.querySelectorAll('.incorrect_point_value').forEach(span => {
+            span.textContent = '(+0)';
+          });
+          document.querySelectorAll('.interrupt_point_value').forEach(span => {
+            span.textContent = '(-4)';
+          });
+        }
       }
 
       document.querySelector('#question_number').textContent = question.QuestionPair[0];
@@ -184,6 +218,7 @@ function update_question(new_question_number) {
       if (question_number == 20 && !opened_tcq) {
         display_tcqs();
       }
+
     }
   }
 }
@@ -221,7 +256,10 @@ function update_buttons(question_number) {
 function hide_tcq() {
   ipcRenderer.send('hide_tcq');
   document.querySelector('#question').setAttribute('style', 'display: visible');
-  document.querySelector('#inputs').setAttribute('style', 'display: visible');
+
+  is_using_scoring 
+    ? document.querySelector('#inputs_scoring').setAttribute('style', 'display: visible')
+    : document.querySelector('#inputs').setAttribute('style', 'display: visible');
   document.querySelector('#tcq_selection').setAttribute('style', 'display: none');
 };
 
