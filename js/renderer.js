@@ -137,6 +137,14 @@ function open_round() {
   round.opened = true;
 }
 
+document.querySelectorAll('#inputs_scoring label').forEach(label => {
+  label.addEventListener('click', (evt, other) => {
+    console.dir(evt);
+    console.dir(other);
+    console.dir(document.querySelector('input[name="team_a"]:checked'));
+    console.dir(document.querySelector('input[name="team_b"]:checked'));
+  })
+})
 function open_round_for_real() {
   fs.readFile(path.join(__dirname, '../questions', `/${round.file}`), function(err, data) {
     parser.parseString(data, function (err, result) {

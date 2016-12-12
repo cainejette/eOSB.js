@@ -114,13 +114,8 @@
 }
 
 .switch-field {
-  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
   padding: 40px;
-    overflow: hidden;
-}
-
-.switch-title {
-  margin-bottom: 6px;
+  overflow: hidden;
 }
 
 .switch-field input {
