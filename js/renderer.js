@@ -49,6 +49,14 @@ document.querySelector('#inputs_scoring').setAttribute('style', 'display: none')
 document.querySelector('#round_over').setAttribute('style', 'display: none');
 document.querySelector('#round_preamble').setAttribute('style', 'display: none');
 
+document.querySelector('label[for="timekeeping"]').addEventListener('click', () => {
+  document.querySelector('input[name="timekeeping"]').click();
+});
+
+document.querySelector('label[for="scorekeeping"]').addEventListener('click', () => {
+  document.querySelector('input[name="scorekeeping"]').click();
+});
+
 function build_round_buttons() {
   var div = document.createElement('ul');
   div.id = "rounds";
