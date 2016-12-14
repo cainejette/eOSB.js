@@ -24,28 +24,30 @@
       </div>
 
       <div id="round_selection" class="row">
-        <h2 class="row">Select a round:</h2>
-        <div id="round_list_hook" class="row"></div>
-        <div id="additional_options" class="row">
-          <h3>Additional options:</h3>
-          <div class="col-xs-12 center-block">
-            <input type="checkbox" name="scorekeeping">
-            <label for="scorekeeping">Scorekeeping</label>
+        <div class="col-xs-10 col-xs-offset-1">
+          <h2 class="row">Select a round:</h2>
+          <div id="round_list_hook" class="row"></div>
+          <div id="additional_options" class="row">
+            <h3>Additional options:</h3>
+            <div class="col-xs-12 center-block">
+              <input type="checkbox" name="scorekeeping">
+              <label for="scorekeeping">Scorekeeping</label>
+            </div>
+            <div class="col-xs-12 center-block">
+              <input type="checkbox" name="timekeeping">
+              <label for="timekeeping">Timekeeping</label>
+            </div>
           </div>
-          <div class="col-xs-12 center-block">
-            <input type="checkbox" name="timekeeping">
-            <label for="timekeeping">Timekeeping</label>
+          <div id="open_round" class="row">
+            <label id="open_round_button" class="col-xs-4 col-xs-offset-4 btn btn-primary" type="button">
+              <span class="helper"></span><img src="../images/forward_arrow.png" />
+            </label>
           </div>
-        </div>
-        <div id="open_round" class="row">
-          <label id="open_round_button" class="col-xs-4 col-xs-offset-4 btn btn-primary" type="button">
-            <span class="helper"></span><img src="../images/forward_arrow.png" />
-          </label>
         </div>
       </div>
 
       <div id="round_preamble" class="row">
-        <div class="col-xs-10 col-xs-offset-1">
+        <div class="col-xs-10 col-xs-offset-1 top-of-page">
           <p>* The first three rules should be read before each competition round begins, even if the teams choose to waive the reading of the rules.</p>
           <p>Before we get started, I would like the coaches of both teams to come forward.  Please introduce yourselves, shake hands, and sit together in the back row.  Alternate team members should also come forward, introduce themselves, and sit at the back of the room during the match.</p>  
           <p>Players please state your name and buzz-in to verify that your systems are working properly.</p>
@@ -79,7 +81,7 @@
       </div>
 
       <div id="tcq_selection" class="row">
-        <div class="col-xs-10 col-xs-offset-1">
+        <div class="col-xs-10 col-xs-offset-1 top-of-page">
           <p>It is time for the Team Challenge Questions.  During this portion of the competition, I would like to remind the audience that they should remain quiet and seated until the break is called.</p>
           <p>Teams are encouraged to work together on this question; however, only the answer sheet handed in by the Captain will be graded.</p>  
           <p>Please write your school name, the competition room, and the round, on the back of your sheets now. </p>
@@ -93,7 +95,7 @@
       </div>
 
       <div id="question" class="row">
-        <div id="prompt" class="col-xs-8">
+        <div id="prompt" class="col-xs-8 top-of-page">
           <strong><span id="question_type"></span></strong>
           <span id="question_number"></span>
           <span>is</span>
@@ -115,7 +117,7 @@
           </div>
         </div>
 
-        <div id="answer" class="col-xs-4">
+        <div id="answer" class="col-xs-4 top-of-page">
           <div><strong>answer</strong></div>
           <div id="question_answer" class="top_line"></div>
         </div>
