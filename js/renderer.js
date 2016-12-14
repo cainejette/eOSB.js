@@ -16,45 +16,14 @@ let is_using_scoring = false;
 let round;
 let rounds = require('../questions/info.json');
 
-function build_round_buttons() {
-
-  var div = document.createElement('ul');
-  div.id = "rounds";
-  div.setAttribute('class', 'row switch-field');
-  document.querySelector('#round_list_hook').appendChild(div);
-
-  document.querySelector('#open_round_button').addEventListener('click', () => open_round());
-
-  rounds.forEach(round => {
-    // var button = document.createElement('button');
-    // button.setAttribute('class', 'round_button col-xs-4 btn btn-primary' + (round.opened ? ' opened' : ''));
-    // button.textContent = round.name;
-    // button.addEventListener('click', (evt) => set_checked(evt));
-    
-    var input = document.createElement('input');
-    input.id = round.file.split('.')[0];
-    input.setAttribute('type', 'radio')
-    input.setAttribute('name', 'rounds');
-    // input.textContent = round.name;
-    div.appendChild(input);
-
-    var label = document.createElement('label');
-    label.setAttribute('for', input.id);
-    label.setAttribute('class', 'col-xs-4');
-    label.textContent = round.name;
-    div.appendChild(label);
-    
-    // document.querySelector('#rounds').appendChild(button);
-  });
-}
-
-function set_checked(source) {
-  var prevSelected = document.querySelector('button[checked="checked"]');
-  if (prevSelected) {
-    prevSelected.removeAttribute('checked');
-  }
-  source.srcElement.setAttribute('checked', 'checked');
-}
+document.querySelectorAll('#inputs_scoring label').forEach(label => {
+  label.addEventListener('click', (evt, other) => {
+    console.dir(evt);
+    console.dir(other);
+    console.dir(document.querySelector('input[name="team_a"]:checked'));
+    console.dir(document.querySelector('input[name="team_b"]:checked'));
+  })
+});
 
 build_round_buttons();
 $('[data-toggle="tooltip"]').tooltip();
@@ -79,6 +48,37 @@ document.querySelector('#inputs').setAttribute('style', 'display: none');
 document.querySelector('#inputs_scoring').setAttribute('style', 'display: none');
 document.querySelector('#round_over').setAttribute('style', 'display: none');
 document.querySelector('#round_preamble').setAttribute('style', 'display: none');
+
+function build_round_buttons() {
+  var div = document.createElement('ul');
+  div.id = "rounds";
+  div.setAttribute('class', 'row switch-field');
+  document.querySelector('#round_list_hook').appendChild(div);
+
+  document.querySelector('#open_round_button').addEventListener('click', () => open_round());
+
+  rounds.forEach(round => {
+    var input = document.createElement('input');
+    input.id = round.file.split('.')[0];
+    input.setAttribute('type', 'radio')
+    input.setAttribute('name', 'rounds');
+    div.appendChild(input);
+
+    var label = document.createElement('label');
+    label.setAttribute('for', input.id);
+    label.setAttribute('class', 'col-xs-4');
+    label.textContent = round.name;
+    div.appendChild(label);
+  });
+}
+
+function set_checked(source) {
+  var prevSelected = document.querySelector('button[checked="checked"]');
+  if (prevSelected) {
+    prevSelected.removeAttribute('checked');
+  }
+  source.srcElement.setAttribute('checked', 'checked');
+}
 
 function show_user_validation() {
   document.querySelector('#user_authentication').setAttribute('style', 'display: visible');
@@ -137,14 +137,6 @@ function open_round() {
   round.opened = true;
 }
 
-document.querySelectorAll('#inputs_scoring label').forEach(label => {
-  label.addEventListener('click', (evt, other) => {
-    console.dir(evt);
-    console.dir(other);
-    console.dir(document.querySelector('input[name="team_a"]:checked'));
-    console.dir(document.querySelector('input[name="team_b"]:checked'));
-  })
-})
 function open_round_for_real() {
   fs.readFile(path.join(__dirname, '../questions', `/${round.file}`), function(err, data) {
     parser.parseString(data, function (err, result) {
