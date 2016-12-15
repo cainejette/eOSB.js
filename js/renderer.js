@@ -12,6 +12,7 @@ let question_number = 0;
 let question;
 let opened_tcq = false;
 let is_using_scoring = false;
+let is_using_timer = false;
 
 let round;
 let rounds = require('../questions/info.json');
@@ -131,6 +132,11 @@ function choose_round() {
 function open_round() {
   opened_tcq = false;
   is_using_scoring = document.querySelector('input[name="scorekeeping"]').checked; 
+  is_using_timer = document.querySelector('input[name="timekeeping"]').checked;
+
+  if (is_using_scoring || is_using_timer) {
+    ipcRenderer.send('init_info_screen');
+  }
 
   let round_id = document.querySelector('input:checked').getAttribute('id');
   round = rounds.find(x => x.file.indexOf(round_id) != -1);

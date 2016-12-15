@@ -82,6 +82,7 @@ function createWindow () {
   mainWindow.center();
 
   var tcqWindow = new BrowserWindow({show: false});
+  var infoWindow = new BrowserWindow({show: false});
 
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
@@ -91,7 +92,10 @@ function createWindow () {
     tcqWindow.setClosable(true);
     tcqWindow.close();
     tcqWindow = null;
-  })
+
+    infoWindow.close();
+    infoWindow.null;
+  });
   
   tcqWindow.setClosable(false);
   tcqWindow.maximize();
@@ -109,6 +113,16 @@ function createWindow () {
 
   ipcMain.on('hide_tcq', function(evt, arg) {
     tcqWindow.hide();
+  });
+
+  ipcMain.on('init_info_screen', function() {
+    infoWindow.loadURL(url.format({
+      pathname: path.join(__dirname, '..', 'html', 'info.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
+
+    infoWindow.show();
   });
 }
 
