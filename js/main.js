@@ -36,21 +36,26 @@ function createWindow () {
           submenu: [
             {
               label: 'small',
+              type: 'radio',
               click: () => {
                 set_font_size('small');
               }
             }, {
               label: 'medium',
+              type: 'radio',
+              checked: true,
               click: () => {
                 set_font_size('medium');
               }
             }, {
               label: 'large',
+              type: 'radio',
               click: () => {
                 set_font_size('large');
               }
             }, {
               label: 'extra large',
+              type: 'radio',
               click: () => {
                 set_font_size('extra-large');
               }
