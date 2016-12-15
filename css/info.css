@@ -20,6 +20,20 @@
   color: orange;
 }
 
+#team_a_name, #team_a_score {
+  border-bottom: 2px solid white;
+}
+
+#team_a_score, #team_b_score {
+  border-left: 2px solid white;
+}
+
 #team_b {
   color: blue;
+}
+
+#timer {
+  color: white;
+  text-align: center;
+  border-bottom: 4px solid white;
 }
