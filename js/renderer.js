@@ -129,6 +129,7 @@ function choose_round() {
 }
 
 function open_round() {
+  opened_tcq = false;
   is_using_scoring = document.querySelector('input[name="scorekeeping"]').checked; 
 
   let round_id = document.querySelector('input:checked').getAttribute('id');
