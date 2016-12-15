@@ -29,4 +29,9 @@ button:focus {
 
 #rounds label {
   height: 75px;
+  cursor: pointer;
+}
+
+#round_selection label, #round_selection input {
+  cursor: pointer;
 }
