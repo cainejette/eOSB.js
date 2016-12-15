@@ -22,9 +22,7 @@ function createWindow () {
       submenu: [
         {
           label: 'Quit',
-          click: () => {
-            app.quit();
-          }
+          role: 'quit'
         }
       ]
     },
