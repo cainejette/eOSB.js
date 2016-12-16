@@ -17,14 +17,13 @@ let is_using_timer = false;
 let round;
 let rounds = require('../questions/info.json');
 
-document.querySelectorAll('#inputs_scoring label').forEach(label => {
-  label.addEventListener('click', (evt, other) => {
-    console.dir(evt);
-    console.dir(other);
-    console.dir(document.querySelector('input[name="team_a"]:checked'));
-    console.dir(document.querySelector('input[name="team_b"]:checked'));
-  })
+document.querySelectorAll('.score_button').forEach(button => {
+  button.addEventListener('click', (evt, other) => score_button_clicked(evt, other));
 });
+
+function score_button_clicked(evt, other) {
+  console.log('hi');
+}
 
 build_round_buttons();
 $('[data-toggle="tooltip"]').tooltip();
