@@ -21,8 +21,31 @@ document.querySelectorAll('.score_button').forEach(button => {
   button.addEventListener('click', (evt, other) => score_button_clicked(evt, other));
 });
 
-function score_button_clicked(evt, other) {
-  console.log('hi');
+function score_button_clicked(evt) {
+  let source_button = (evt.path[0].tagName == 'IMG') ? evt.path[1] : evt.path[0];
+  let teamAClick = source_button.htmlFor.split('_')[1] == 'a' ? true : false;
+  let teamAResult = source_button.htmlFor.split('_')[2];
+  let teamBClick = source_button.htmlFor.split('_')[1] == 'b' ? true : false;
+  let teamBResult = source_button.htmlFor.split('_')[2];
+
+  if (teamAClick) {
+    let teamBButton = document.querySelector('input[name="team_b"]:checked')
+    if (teamBButton) {
+      teamBResult = teamBButton.id.split('_')[2];
+    } else {
+      teamBResult = 'incorrect';
+    }
+  } else if (teamBClick) {
+    let teamAButton = document.querySelector('input[name="team_a"]:checked')
+    if (teamAButton) {
+      teamAResult = teamAButton.id.split('_')[2];
+    } else {
+      teamAResult = 'incorrect';
+    }
+  }
+
+  console.log('team a:', teamAResult);
+  console.log('team b:', teamBResult);
 }
 
 build_round_buttons();
