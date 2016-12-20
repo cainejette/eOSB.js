@@ -24,28 +24,58 @@ document.querySelectorAll('.score_button').forEach(button => {
 function score_button_clicked(evt) {
   let source_button = (evt.path[0].tagName == 'IMG') ? evt.path[1] : evt.path[0];
   let teamAClick = source_button.htmlFor.split('_')[1] == 'a' ? true : false;
-  let teamAResult = source_button.htmlFor.split('_')[2];
   let teamBClick = source_button.htmlFor.split('_')[1] == 'b' ? true : false;
-  let teamBResult = source_button.htmlFor.split('_')[2];
-
+  
+  let teamAResult, teamBResult;
   if (teamAClick) {
+    teamAResult = source_button.htmlFor.split('_')[2];
     let teamBButton = document.querySelector('input[name="team_b"]:checked')
     if (teamBButton) {
       teamBResult = teamBButton.id.split('_')[2];
-    } else {
-      teamBResult = 'incorrect';
     }
   } else if (teamBClick) {
+    teamBResult = source_button.htmlFor.split('_')[2];
     let teamAButton = document.querySelector('input[name="team_a"]:checked')
     if (teamAButton) {
       teamAResult = teamAButton.id.split('_')[2];
-    } else {
-      teamAResult = 'incorrect';
     }
   }
 
-  console.log('team a:', teamAResult);
-  console.log('team b:', teamBResult);
+  let teamAScore = 0;
+  if (teamAResult == 'correct') {
+    teamAScore = 4;
+  } else if (teamAResult == 'interrupt') {
+    teamAScore = -4;
+  } else {
+    teamAScore = 0;
+  }
+
+  let teamBScore = 0;
+  if (teamBResult == 'correct') {
+    teamBScore = 4;
+  } else if (teamBResult == 'interrupt') {
+    teamBScore = -4;
+  } else {
+    teamBScore = 0;
+  }
+
+  if (teamAResult == 'correct' || teamBResult == 'correct' || 
+          (teamAResult != undefined && teamBResult != undefined)) {
+    ipcRenderer.send('score', teamAScore, teamBScore);
+    console.log('resetting...');
+    
+    let teamAButton = document.querySelector('input[name="team_a"]:checked')
+    if (teamAButton) {
+      console.log('resetting team A...');
+      teamAButton.checked = false;
+    }
+
+    let teamBButton = document.querySelector('input[name="team_b"]:checked')
+    if (teamBButton) {
+      console.log('resetting team B...');
+      teamBButton.checked = false;
+    }
+  }
 }
 
 build_round_buttons();

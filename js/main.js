@@ -135,6 +135,11 @@ function createWindow () {
 
     infoWindow.show();
   });
+
+  ipcMain.on('score', function(evt, arg1, arg2) {
+    console.dir(arg1);
+    console.dir(arg2);
+  });
 }
 
 // This method will be called when Electron has finished
