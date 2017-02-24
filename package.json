@@ -1,24 +1,12 @@
 {
-  "name": "eOSB.js",
-  "version": "1.0.0",
-  "description": "electronified eOSB",
-  "main": "js/main.js",
+  "name": "eosb.js",
+  "version": "0.1.0",
+  "main": "app/main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/cainejette/eOSB.js",
-  "keywords": [
-    "Electron"
-  ],
-  "author": "Caine Jette",
   "devDependencies": {
-    "electron": "^1.4.1"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.7",
-    "ipc": "0.0.1",
-    "jquery": "^3.1.1",
-    "pdfjs-dist-for-node": "^1.0.892-rc.1",
-    "xml2js": "^0.4.17"
+    "electron": "^1.4.1",
+    "gulp": "^3.9.1"
   }
 }
