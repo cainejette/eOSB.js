@@ -1,18 +1,13 @@
 (function () {
     'use strict';
     angular.module('app')
-        .controller('loginController', ['$q', '$mdDialog', LoginController]);
+        .controller('loginController', ['$q', '$mdDialog', '$location', LoginController]);
     
-    function LoginController($q, $mdDialog) {
+    function LoginController($q, $mdDialog, $location) {
         var self = this;
-        // Load initial data
-        login();
-        
-        //----------------------
-        // Internal functions 
-        //----------------------
-        function login() {
-          console.log('hi! login?');
+
+        self.login = function() {
+          $location.path('/rounds');
         }
     }
 })();

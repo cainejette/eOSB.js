@@ -14,6 +14,11 @@
                 controller: 'loginController',
                 controllerAs: '_ctrl'
             });
+            $routeProvider.when('/rounds', {
+                templateUrl: _templateBase + '/app/rounds/rounds.html' ,
+                controller: 'roundsController',
+                controllerAs: '_ctrl'
+            })
             $routeProvider.otherwise({ redirectTo: '/' });
         }
     ]);
