@@ -1,13 +1,18 @@
 (function () {
     'use strict';
     angular.module('app')
-        .controller('loginController', ['$q', '$mdDialog', '$location', LoginController]);
+        .controller('loginController', ['$location', '$scope', LoginController]);
     
-    function LoginController($q, $mdDialog, $location) {
-        var self = this;
+    function LoginController($location, $scope) {
+        $scope.password = '';
 
-        self.login = function() {
-          $location.path('/rounds');
+        $scope.login = function() {
+            if ($scope.password = 'hi') {
+                $location.path('/rounds');
+            }
+            else {
+
+            }
         }
     }
 })();
