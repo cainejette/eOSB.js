@@ -1,7 +1,7 @@
 {
   "name": "eOSB.js",
   "version": "0.1.0",
-  "main": "app/main.js",
+  "main": "eOSB.js/electron.js",
   "scripts": {
     "start": "electron ."
   },
