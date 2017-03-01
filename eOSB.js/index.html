@@ -1,22 +1,27 @@
 <html lang="en" ng-app="app">
-    <title>eOSB.js</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"gt;
-    <meta name="description" content="">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<body>
-    <ng-view></ng-view>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/angular-aria/angular-aria.js"></script>
-    <script src="../bower_components/angular-material/angular-material.js"></script>
-   
-    <script src="./angular.js"></script>
-    <script src="./app/components/login/loginController.js"></script>
-    <script src="./app/components/rounds/roundsController.js"></script>
+    <head>
+        <title>eOSB.js</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"gt;>
+        <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-</body>
+        <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="./app/components/login/login.css" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <ng-view></ng-view>
+        </div>
+        <script src="../bower_components/angular/angular.js"></script>
+        <script src="../bower_components/angular-route/angular-route.js"></script>
+        <script src="../bower_components/angular-animate/angular-animate.js"></script>
+        <script src="../bower_components/angular-aria/angular-aria.js"></script>
+        <script src="../bower_components/angular-material/angular-material.js"></script>
+    
+        <script src="./angular.js"></script>
+        <script src="./app/components/login/loginController.js"></script>
+        <script src="./app/components/rounds/roundsController.js"></script>
+    </body>
 </html>

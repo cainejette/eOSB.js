@@ -1,10 +1,19 @@
-<div class="row">
-  <h1 class="text-center">Welcome to eOSB.js</h1>
+<div class="login">
+  <div class="row">
+    <h1 class="text-center col-12">Welcome to eOSB.js</h1>
+  </div>
+
   <form ng-submit="login()">
-    <input class="center-block input-lg" type="password" ng-keypress="clear()" ng-model="password" placeholder="Enter password" autofocus>
-    <button ng-click="login()" class="center-block input-lg btn btn-primary">
-      <span class="helper"></span><img src="./app/images/forward_arrow.png" />
-    </button>
-    <p class="text-center" ng-show="invalid_password">try again :(</p>
+    <div class="row justify-content-center">
+      <input class="col-6" type="password" ng-keypress="clear()" ng-model="password" placeholder="Enter password" autofocus>
+    </div>
+
+    <div class="row justify-content-center">
+      <button ng-click="login()" class="btn btn-primary col-6">
+        <span class="helper"></span><img src="./app/images/forward_arrow.png" />
+      </button>
+    </div>
+
+    <p class="text-center red" ng-show="invalid_password">try again :(</p>
   </form>
 </div>

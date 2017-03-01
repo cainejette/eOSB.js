@@ -10,6 +10,6 @@
     "gulp": "^3.9.1"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^4.0.0-alpha.6"
   }
 }

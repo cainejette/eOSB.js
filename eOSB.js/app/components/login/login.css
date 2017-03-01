@@ -1,0 +1,24 @@
+.login {
+  margin-top: 100px;
+}
+
+.login form {
+  margin-top: 25px;
+}
+
+.login form p {
+  margin-top: 15px;
+}
+
+.red {
+  color: red;
+}
+
+input {
+  text-align: center;
+  height: 65px;
+}
+
+.btn {
+  height: 65px;
+}
