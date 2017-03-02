@@ -1,6 +1,8 @@
 'use strict';
 angular.module('app').controller('loginController',
     ['$location', '$scope', function ($location, $scope) {
+        $location.path('/rounds');
+        
         $scope.login = function () {
             if ($scope.password == 'hi') {
                 $location.path('/rounds');

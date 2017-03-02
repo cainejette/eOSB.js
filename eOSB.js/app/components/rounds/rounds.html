@@ -1,1 +1,16 @@
-in rounds
+<div class="rounds">
+
+  <div class="row">
+    <h1 class="text-center col">Choose a round:</h1>
+  </div>
+
+  <div class="row">
+    <div ng-repeat="round in rounds">
+      <div class="col-4 round">
+        <button class="btn">
+          {{ round.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
