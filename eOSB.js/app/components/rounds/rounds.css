@@ -1,4 +1,8 @@
 .round {
-  color: blue;
   height: 75px;
+}
+
+.checked {
+  color: red !important;
+  background-color: green;
 }

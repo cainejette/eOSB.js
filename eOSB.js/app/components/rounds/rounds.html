@@ -4,14 +4,10 @@
     <h1 class="text-center col">Choose a round:</h1>
   </div>
 
-  <div class="row">
-    <div ng-repeat="round in rounds">
-      <div class="col-4 round">
-        <button class="btn">
-          {{ round.name }}
-        </button>
-      </div>
-    </div>
+  <div class="row btn-group">
+    <label ng-repeat="round in rounds" class="btn btn-primary col col-4 round" ng-class="{checked: round == selectedRound}" ng-click="check(round)">
+      {{ round.name }}
+    </label>
   </div>
 
   <div class="row">
@@ -28,8 +24,8 @@
   </div>
 
   <div class="row justify-content-center">
-    <button class="text-center btn btn-primary col-6">
-      <span class="helper"></span><img src="./app/images/forward_arrow.png" />
+    <button class="text-center btn btn-primary col-6" ng-click="openRound()">
+      <img src="./app/images/forward_arrow.png" />
     </button>
   </div>
 </div>
