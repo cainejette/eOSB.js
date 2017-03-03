@@ -19,6 +19,11 @@
                 controller: 'roundsController',
                 controllerAs: '_ctrl'
             })
+            $routeProvider.when('/roundPreamble', {
+                templateUrl: _templateBase + 'round_preamble/round_preamble.html' ,
+                controller: 'roundPreambleController',
+                controllerAs: '_ctrl'
+            })
             $routeProvider.otherwise({ redirectTo: '/' });
         }
     ]);

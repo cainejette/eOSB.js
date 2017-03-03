@@ -15,6 +15,8 @@ angular.module('app').controller('roundsController',
             console.log('use scorekeeper: ' + $scope.useScorekeeping);
             console.log('use timekeeper: ' + $scope.useTimekeeping);
             console.log('open round: ' + $scope.selectedRound.name);
+
+            $location.path('/roundPreamble');
         }
     }]
 );
