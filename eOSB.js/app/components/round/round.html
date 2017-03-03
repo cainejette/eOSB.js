@@ -1,3 +1,32 @@
-<div class="question">
-  <h1>hi, i am question</h1>
+<div id="question" class="row">
+  <div id="prompt" class="col col-8">
+    <strong>
+      <span>{{ question.QuestionType[0] }}</span>
+      <span>{{ question_number }}</span>
+    </strong>
+    <span>is</span>
+    <strong>
+      <span>{{ question_format }}</span>
+    </strong>
+    <div id="question_text" class="top_line"></div>
+    <br />
+    <div id="question_choices">
+      <div>W</div>
+      <div id="option_w" class="top_line"></div>
+      <br />
+      <div>X</div>
+      <div id="option_x" class="top_line"></div>
+      <br />
+      <div>Y</div>
+      <div id="option_y" class="top_line"></div>
+      <br />
+      <div>Z</div>
+      <div id="option_z" class="top_line"></div>
+    </div>
+  </div>
+
+  <div id="answer" class="col col-4">
+    <div><strong>answer</strong></div>
+    <div id="question_answer" class="top_line"></div>
+  </div>
 </div>

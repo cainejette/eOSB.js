@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
-    "electron-debug": "^1.1.0"
+    "electron-debug": "^1.1.0",
+    "xml2js": "^0.4.17"
   }
 }

@@ -1,6 +1,8 @@
 'use strict';
 angular.module('app').controller('roundsController', 
     ['$location', '$scope', function($location, $scope) {
+        $location.path('/round');
+
         $scope.rounds = require('./app/questions/info.json');
         $scope.selectedRound = undefined;
 
