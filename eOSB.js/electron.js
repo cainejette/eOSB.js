@@ -1,3 +1,5 @@
+require('electron-debug')();
+
 const electron = require('electron');
 const app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
@@ -26,8 +28,6 @@ app.on('ready', function () {
     protocol: 'file:',
     slashes: true
   }));
-  // Open the devtools.
-  mainWindow.openDevTools();
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
 

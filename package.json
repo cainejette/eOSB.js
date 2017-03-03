@@ -6,10 +6,12 @@
     "start": "electron ."
   },
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron": "^1.4.1",
     "gulp": "^3.9.1"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6"
+    "bootstrap": "^4.0.0-alpha.6",
+    "electron-debug": "^1.1.0"
   }
 }
