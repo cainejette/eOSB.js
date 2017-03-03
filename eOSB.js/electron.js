@@ -1,4 +1,5 @@
 require('electron-debug')();
+require('electron-reload')(__dirname);
 
 const electron = require('electron');
 const app = electron.app;
