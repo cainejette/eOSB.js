@@ -31,6 +31,7 @@ angular.module('app').controller('roundController',
         console.log('next question!');
         questionIndex++;
         $scope.question = questions[questionIndex];
+        console.log('[' + $scope.question.QuestionType[0] + ']');
       }
     }]
 );

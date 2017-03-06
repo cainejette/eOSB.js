@@ -10,7 +10,7 @@
     </strong>
     <div>{{ question.QuestionText[0] }}</div>
     <br />
-    <div id="question_choices">
+    <div id="question_choices" ng-show="question.QuestionFormat[0] == 'Multiple Choice'">
       <div>W</div>
       <div>{{ question.AnswerW[0] }}</div>
       <br />
