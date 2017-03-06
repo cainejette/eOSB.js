@@ -2,11 +2,9 @@
 angular.module('app').controller('roundController', 
     ['$location', '$scope', function($location, $scope) {
 
-      $scope.questions = undefined;
-      $scope.selectedQuestionIndex = 0;
-      $scope.question = undefined;
-
-      $scope.question_number = 'hello';
+      var questions = '';
+      $scope.question = '';
+      var questionIndex = -1;
 
       require('fs').readFile(__dirname + '/app/questions/round_1.xml', (readErr, xml) => {
         if (readErr) throw readErr;
@@ -14,19 +12,25 @@ angular.module('app').controller('roundController',
         require('xml2js').parseString(xml, function (parseErr, json) {
           if (parseErr) throw parseErr;
 
-          $scope.questions = json.Round.Questions[0].Question;
-          $scope.question = $scope.questions[$scope.selectedQuestionIndex];
-          console.dir($scope.questions);
-          console.dir($scope.question);
+          questions = json.Round.Questions[0].Question;
 
-          updateQuestion();
         });
       });
 
-      var updateQuestion = function() {
-        console.log('question number: ' + $scope.question_number);
-        $scope.question_number = $scope.question.QuestionPair[0];
-        console.log('question number: ' + $scope.question_number);
+      $scope.back = function() {
+        console.log('back!');
+        questionIndex--;
+        $scope.question = questions[questionIndex];
+      }
+
+      $scope.next_tossup = function() {
+        console.log('next tossup!');
+      }
+
+      $scope.next_question = function() {
+        console.log('next question!');
+        questionIndex++;
+        $scope.question = questions[questionIndex];
       }
     }]
 );
