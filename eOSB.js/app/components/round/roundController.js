@@ -6,17 +6,6 @@ angular.module('app').controller('roundController',
       $scope.question = '';
       var questionIndex = -1;
 
-      require('fs').readFile(__dirname + '/app/questions/round_1.xml', (readErr, xml) => {
-        if (readErr) throw readErr;
-        
-        require('xml2js').parseString(xml, function (parseErr, json) {
-          if (parseErr) throw parseErr;
-
-          questions = json.Round.Questions[0].Question;
-
-        });
-      });
-
       $scope.back = function() {
         console.log('back!');
         questionIndex--;
@@ -33,5 +22,16 @@ angular.module('app').controller('roundController',
         $scope.question = questions[questionIndex];
         console.log('[' + $scope.question.QuestionType[0] + ']');
       }
+
+      require('fs').readFile(__dirname + '/app/questions/round_1.xml', (readErr, xml) => {
+        if (readErr) throw readErr;
+        
+        require('xml2js').parseString(xml, function (parseErr, json) {
+          if (parseErr) throw parseErr;
+
+          questions = json.Round.Questions[0].Question;
+          $scope.question = questions[questionIndex];
+        });
+      });
     }]
 );

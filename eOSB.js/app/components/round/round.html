@@ -1,5 +1,5 @@
 <div id="question" class="row">
-  <div id="prompt" class="col col-8">
+  <div class="col col-8">
     <strong>
       <span>{{ question.QuestionType[0] }}</span>
       <span>{{ question.QuestionPair[0] }}</span>
@@ -10,7 +10,7 @@
     </strong>
     <div>{{ question.QuestionText[0] }}</div>
     <br />
-    <div id="question_choices" ng-show="question.QuestionFormat[0] == 'Multiple Choice'">
+    <div ng-show="question.QuestionFormat[0] == 'Multiple Choice'">
       <div>W</div>
       <div>{{ question.AnswerW[0] }}</div>
       <br />
@@ -31,14 +31,16 @@
   </div>
 </div>
 
-<div id="inputs" class="row">
-  <label id="prev" class="col-xs-4 btn btn-primary" type="button" ng-click="back()">
+<footer id="inputs" class="footer">
+  <div class="container">
+  <label class="col col-4 btn btn-primary" type="button" ng-click="back()">
     <img src="./app/images/back_arrow.png" />
   </label>
-  <label id="next_question" class="col-xs-4 btn btn-primary" type="button" ng-click="next_tossup()">
+  <label class="col col-4 btn btn-primary" type="button" ng-click="next_tossup()">
     <img src="./app/images/red_x.png" />
   </label>
-  <label id="next_tossup" class="col-xs-4 btn btn-primary" type="button" ng-click="next_question()">
+  <label class="col col-4 btn btn-primary" type="button" ng-click="next_question()">
     <img src="./app/images/forward_arrow.png" />
   </label>
-</div>
+  </div>
+</footer>
