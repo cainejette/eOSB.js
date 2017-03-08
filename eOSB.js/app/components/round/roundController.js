@@ -7,9 +7,10 @@ angular.module('app').controller('roundController',
       var questionIndex = -1;
 
       $scope.back = function() {
-        console.log('back!');
-        questionIndex--;
-        $scope.question = questions[questionIndex];
+        if (questionIndex > 0) {
+          questionIndex--;
+          $scope.question = questions[questionIndex];
+        }
       }
 
       $scope.next_tossup = function() {

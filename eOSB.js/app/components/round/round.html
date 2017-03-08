@@ -1,13 +1,13 @@
-<div id="question" class="container">
+<div id="question" class="container-fluid">
   <div class="row">
     <div class="col col-8">
       <strong>
-        <span>{{ question.QuestionType[0] }}</span>
+        <span>{{ question.QuestionType[0] | lowercase }}</span>
         <span>{{ question.QuestionPair[0] }}</span>
       </strong>
-      <span>is</span>
+      <span>/</span>
       <strong>
-        <span>{{ question.QuestionFormat[0] }}</span>
+        <span>{{ question.QuestionFormat[0] | lowercase }}</span>
       </strong>
       <div>{{ question.QuestionText[0] }}</div>
       <br />
