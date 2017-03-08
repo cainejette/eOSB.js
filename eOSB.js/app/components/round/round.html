@@ -1,46 +1,50 @@
-<div id="question" class="row">
-  <div class="col col-8">
-    <strong>
-      <span>{{ question.QuestionType[0] }}</span>
-      <span>{{ question.QuestionPair[0] }}</span>
-    </strong>
-    <span>is</span>
-    <strong>
-      <span>{{ question.QuestionFormat[0] }}</span>
-    </strong>
-    <div>{{ question.QuestionText[0] }}</div>
-    <br />
-    <div ng-show="question.QuestionFormat[0] == 'Multiple Choice'">
-      <div>W</div>
-      <div>{{ question.AnswerW[0] }}</div>
+<div id="question" class="container">
+  <div class="row">
+    <div class="col col-8">
+      <strong>
+        <span>{{ question.QuestionType[0] }}</span>
+        <span>{{ question.QuestionPair[0] }}</span>
+      </strong>
+      <span>is</span>
+      <strong>
+        <span>{{ question.QuestionFormat[0] }}</span>
+      </strong>
+      <div>{{ question.QuestionText[0] }}</div>
       <br />
-      <div>X</div>
-      <div>{{ question.AnswerX[0] }}</div>
-      <br />
-      <div>Y</div>
-      <div>{{ question.AnswerY[0] }}</div>
-      <br />
-      <div>Z</div>
-      <div>{{ question.AnswerZ[0] }}</div>
+      <div ng-show="question.QuestionFormat[0] == 'Multiple Choice'">
+        <div>W</div>
+        <div>{{ question.AnswerW[0] }}</div>
+        <br />
+        <div>X</div>
+        <div>{{ question.AnswerX[0] }}</div>
+        <br />
+        <div>Y</div>
+        <div>{{ question.AnswerY[0] }}</div>
+        <br />
+        <div>Z</div>
+        <div>{{ question.AnswerZ[0] }}</div>
+      </div>
     </div>
-  </div>
 
-  <div class="col col-4">
-    <div><strong>answer</strong></div>
-    <div>{{ question.CorrectAnswer[0] }}</div>
+    <div class="col col-4">
+      <div><strong>answer</strong></div>
+      <div>{{ question.CorrectAnswer[0] }}</div>
+    </div>
   </div>
 </div>
 
-<footer id="inputs" class="footer">
-  <div class="container">
-  <label class="col col-4 btn btn-primary" type="button" ng-click="back()">
-    <img src="./app/images/back_arrow.png" />
-  </label>
-  <label class="col col-4 btn btn-primary" type="button" ng-click="next_tossup()">
-    <img src="./app/images/red_x.png" />
-  </label>
-  <label class="col col-4 btn btn-primary" type="button" ng-click="next_question()">
-    <img src="./app/images/forward_arrow.png" />
-  </label>
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <label class="col col-4 btn btn-primary" type="button" ng-click="back()">
+        <img src="./app/images/back_arrow.png" />
+      </label>
+      <label class="col col-4 btn btn-primary" type="button" ng-click="next_tossup()">
+        <img src="./app/images/red_x.png" />
+      </label>
+      <label class="col col-4 btn btn-primary" type="button" ng-click="next_question()">
+        <img src="./app/images/forward_arrow.png" />
+      </label>
+    </div>
   </div>
 </footer>
