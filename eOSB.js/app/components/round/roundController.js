@@ -4,24 +4,39 @@ angular.module('app').controller('roundController',
 
       var questions = '';
       $scope.question = '';
-      var questionIndex = -1;
+      $scope.questionIndex = -1;
 
       $scope.back = function() {
-        if (questionIndex > 0) {
-          questionIndex--;
-          $scope.question = questions[questionIndex];
+        if ($scope.questionIndex > 0) {
+          $scope.questionIndex--;
+          $scope.question = questions[$scope.questionIndex];
         }
       }
 
       $scope.next_tossup = function() {
-        console.log('next tossup!');
+        if ($scope.questionIndex < 40) {
+          $scope.questionIndex % 2 == 0 ? $scope.questionIndex += 2 : $scope.questionIndex += 1;
+          $scope.question = questions[$scope.questionIndex];
+        } 
+        
+        if ($scope.questionIndex > 39) {
+          endRound();
+        }
       }
 
       $scope.next_question = function() {
-        console.log('next question!');
-        questionIndex++;
-        $scope.question = questions[questionIndex];
-        console.log('[' + $scope.question.QuestionType[0] + ']');
+        if ($scope.questionIndex < 40) {
+          $scope.questionIndex++;
+          $scope.question = questions[$scope.questionIndex];
+        } 
+        
+        if ($scope.questionIndex > 39) {
+          endRound();
+        }
+      }
+
+      var endRound = function() {
+        console.log('done!');
       }
 
       require('fs').readFile(__dirname + '/app/questions/round_1.xml', (readErr, xml) => {
@@ -31,7 +46,7 @@ angular.module('app').controller('roundController',
           if (parseErr) throw parseErr;
 
           questions = json.Round.Questions[0].Question;
-          $scope.question = questions[questionIndex];
+          $scope.question = questions[$scope.questionIndex];
         });
       });
     }]

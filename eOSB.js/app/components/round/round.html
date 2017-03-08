@@ -1,5 +1,5 @@
-<div id="question" class="container-fluid">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row" ng-show="questionIndex < 40">
     <div class="col col-8">
       <strong>
         <span>{{ question.QuestionType[0] | lowercase }}</span>
@@ -30,6 +30,10 @@
       <div><strong>answer</strong></div>
       <div>{{ question.CorrectAnswer[0] }}</div>
     </div>
+  </div>
+
+  <div class="row" ng-show="questionIndex >= 40">
+    end of round!
   </div>
 </div>
 
