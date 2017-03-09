@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row" ng-show="questionIndex < 40 && showTcqReminder == false">
+  <div class="row" ng-show="questionIndex < 40 && !showTcqReminder">
     <div class="col col-8">
       <strong>
         <span>{{ question.QuestionType[0] | lowercase }}</span>
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<footer class="footer">
+<footer class="footer" ng-show="!showTcqReminder">
   <div class="container-fluid">
     <div class="row">
       <label class="col col-4 btn btn-primary" type="button" ng-click="back()">
@@ -52,3 +52,8 @@
     </div>
   </div>
 </footer>
+
+<div class="container-fluid" ng-show="showTcqReminder">
+  <label class="col col-4 btn btn-primary" type="button">open</label>
+  <label class="col col-4 btn btn-primary" type="button">no</label>
+</div>
