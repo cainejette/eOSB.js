@@ -19,12 +19,12 @@
                 controller: 'roundsController',
                 controllerAs: '_ctrl'
             })
-            $routeProvider.when('/roundPreamble', {
+            $routeProvider.when('/roundPreamble/:file', {
                 templateUrl: _templateBase + 'round_preamble/round_preamble.html' ,
                 controller: 'roundPreambleController',
                 controllerAs: '_ctrl'
             })
-            $routeProvider.when('/round', {
+            $routeProvider.when('/round/:file', {
                 templateUrl: _templateBase + 'round/round.html' ,
                 controller: 'roundController',
                 controllerAs: '_ctrl'

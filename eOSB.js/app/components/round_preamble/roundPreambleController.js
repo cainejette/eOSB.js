@@ -1,10 +1,11 @@
 'use strict';
 angular.module('app').controller('roundPreambleController', 
-    ['$location', '$scope', function($location, $scope) {
+    ['$location', '$scope', '$routeParams', function($location, $scope, $routeParams) {
       $scope.openRound = function() {
         console.log('opening round!');
 
-        $location.path('/round');
+        console.log('in round preamble... params: ' + $routeParams.file)
+        $location.path(`/round/${$routeParams.file}`);
       }      
     }]
 );

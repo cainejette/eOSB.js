@@ -1,8 +1,6 @@
 'use strict';
 angular.module('app').controller('roundsController', 
     ['$location', '$scope', function($location, $scope) {
-        $location.path('/round');
-
         $scope.rounds = require('./app/questions/info.json');
         $scope.selectedRound = undefined;
 
@@ -18,7 +16,8 @@ angular.module('app').controller('roundsController',
             console.log('use timekeeper: ' + $scope.useTimekeeping);
             console.log('open round: ' + $scope.selectedRound.name);
 
-            $location.path('/roundPreamble');
+            console.log('navigating to: ' + `/roundPreamble/${$scope.selectedRound.file}`);
+            $location.path(`/roundPreamble/${$scope.selectedRound.file}`);
         }
     }]
 );

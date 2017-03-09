@@ -1,38 +1,50 @@
 [
   {
-    "name": "Round Robin Round 1"
+    "name": "Round Robin Round 1",
+    "file": "round_1.xml"
   },
   {
-    "name": "Round Robin Round 2"
+    "name": "Round Robin Round 2",
+    "file": "round_2.xml"
   },
   {
-    "name": "Round Robin Round 3"
+    "name": "Round Robin Round 3",
+    "file": "round_3.xml"
   },
   {
-    "name": "Round Robin Round 4"
+    "name": "Round Robin Round 4",
+    "file": "round_4.xml"
   },
   {
-    "name": "Round Robin Round 5"
+    "name": "Round Robin Round 5",
+    "file": "round_5.xml"
   },
   {
-    "name": "Double Elimination Round 1"
+    "name": "Double Elimination Round 1",
+    "file": "round_6.xml"
   },
   {
-    "name": "Double Elimination Round 2"
+    "name": "Double Elimination Round 2",
+    "file": "round_7.xml"
   },
   {
-    "name": "Double Elimination Round 3"
+    "name": "Double Elimination Round 3",
+    "file": "round_8.xml"
   },
   {
-    "name": "Double Elimination Round 4"
+    "name": "Double Elimination Round 4",
+    "file": "round_9.xml"
   },
   {
-    "name": "Double Elimination Round 5"
+    "name": "Double Elimination Round 5",
+    "file": "round_10.xml"
   },
   {
-    "name": "Double Elimination Round 6"
+    "name": "Double Elimination Round 6",
+    "file": "round_11.xml"
   },
   {
-    "name": "Double Elimination Round 7"
+    "name": "Double Elimination Round 7",
+    "file": "round_12.xml"
   }
 ]

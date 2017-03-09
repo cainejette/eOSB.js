@@ -1,6 +1,8 @@
 'use strict';
 angular.module('app').controller('roundController', 
-    ['$location', '$scope', function($location, $scope) {
+    ['$location', '$scope', '$routeParams', function($location, $scope, $routeParams) {
+
+      console.log('route params: ' + `/app/questions/${$routeParams.file}`);
 
       var questions = '';
       $scope.question = '';
@@ -39,7 +41,7 @@ angular.module('app').controller('roundController',
         console.log('done!');
       }
 
-      require('fs').readFile(__dirname + '/app/questions/round_1.xml', (readErr, xml) => {
+      require('fs').readFile(__dirname + `/app/questions/${$routeParams.file}`, (readErr, xml) => {
         if (readErr) throw readErr;
         
         require('xml2js').parseString(xml, function (parseErr, json) {
