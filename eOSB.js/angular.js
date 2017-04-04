@@ -2,10 +2,29 @@
 
 var _templateBase = './app/components/';
 
+// const readFile = require('fs-readfile-promise');
+
+
+// var parseString = require('xml2js').parseString;
+
+// var parseStringPromisifier = function(string) {
+//     return new Promise(function(resolve, reject)
+//     {
+//         parseString(string, function(err, result){
+//             if(err){
+//                 reject(err);
+//             }
+//             else {
+//                 resolve(result);
+//             }
+//     });
+// });
+
+
 angular.module('app', [
     'ngRoute',
     'ngMaterial',
-    'ngAnimate'
+    'ngAnimate',
 ]).config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: _templateBase + 'login/login.html' ,
@@ -22,9 +41,19 @@ angular.module('app', [
             controller: 'roundPreambleController',
             controllerAs: '_ctrl'
         })
-        $routeProvider.when('/round/:file', {
+        $routeProvider.when('/round/:file/:question', {
             templateUrl: _templateBase + 'round/round.html' ,
             controller: 'roundController',
+            controllerAs: '_ctrl',
+            resolve: {
+                round: function($route, RoundService) {
+                    return RoundService.load($route.current.params.file);
+                }
+            }
+        })
+        $routeProvider.when('/tcqs/:file/:question', {
+            templateUrl: _templateBase + 'tcqs/tcqs.html' ,
+            controller: 'tcqsController',
             controllerAs: '_ctrl'
         })
         $routeProvider.otherwise({ redirectTo: '/' });

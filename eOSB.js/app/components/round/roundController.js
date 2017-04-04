@@ -1,12 +1,11 @@
 'use strict';
 angular.module('app').controller('roundController', 
-    ['$location', '$scope', '$routeParams', function($location, $scope, $routeParams) {
-
-      console.log('route params: ' + `/app/questions/${$routeParams.file}`);
-
-      var questions = '';
-      $scope.question = '';
-      $scope.questionIndex = -1;
+    ['$location', '$scope', '$routeParams', 'round', function($location, $scope, $routeParams, round) {
+      
+      var questions = round.Round.Questions[0].Question;
+      $scope.questionIndex = $routeParams.question;
+      $scope.question = questions[$scope.questionIndex];
+      
       $scope.showTcqReminder = false;
       var hasOpenedTcqs = false;
 
@@ -50,19 +49,13 @@ angular.module('app').controller('roundController',
         }
       }
 
+      $scope.open_tcqs = function() {
+        console.log('navigating to: ' + `/tcqs/${$routeParams.file}`);
+        $location.path(`/tcqs/${$routeParams.file}/${$scope.questionIndex}`);
+      }
+
       var endRound = function() {
         console.log('done!');
       }
-
-      require('fs').readFile(__dirname + `/app/questions/${$routeParams.file}`, (readErr, xml) => {
-        if (readErr) throw readErr;
-        
-        require('xml2js').parseString(xml, function (parseErr, json) {
-          if (parseErr) throw parseErr;
-
-          questions = json.Round.Questions[0].Question;
-          $scope.question = questions[$scope.questionIndex];
-        });
-      });
     }]
 );
