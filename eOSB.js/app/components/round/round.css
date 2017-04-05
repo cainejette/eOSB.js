@@ -9,3 +9,9 @@
   background-color: lightgoldenrodyellow;
   height: 100%;
 }
+
+.tcq_reminder {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
