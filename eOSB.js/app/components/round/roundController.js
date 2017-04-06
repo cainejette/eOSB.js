@@ -3,7 +3,7 @@ angular.module('app').controller('roundController',
     ['$location', '$scope', '$routeParams', 'round', function($location, $scope, $routeParams, round) {
       
       var questions = round.Round.Questions[0].Question;
-      $scope.questionIndex = $routeParams.question;
+      $scope.questionIndex = parseInt($routeParams.question);
       $scope.question = questions[$scope.questionIndex];
       
       $scope.showTcqReminder = false;
