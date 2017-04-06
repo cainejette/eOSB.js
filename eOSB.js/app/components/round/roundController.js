@@ -54,6 +54,10 @@ angular.module('app').controller('roundController',
         $location.path(`/tcqs/${$routeParams.file}/${$scope.questionIndex}`);
       }
 
+      $scope.close_tcq_reminder = function() {
+        $scope.showTcqReminder = false;
+      }
+
       var endRound = function() {
         console.log('done!');
       }
