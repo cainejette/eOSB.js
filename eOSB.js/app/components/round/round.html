@@ -40,15 +40,15 @@
 <footer class="footer" ng-show="!showTcqReminder">
   <div class="container-fluid">
     <div class="row">
-      <label class="col col-4 btn btn-primary" type="button" ng-click="back()">
+      <button class="col col-4 btn btn-primary" ng-click="back()" ng-disabled="questionIndex == 0">
         <img src="./app/images/back_arrow.png" />
-      </label>
-      <label class="col col-4 btn btn-primary" type="button" ng-click="next_tossup()">
+      </button>
+      <button class="col col-4 btn btn-primary" ng-click="next_tossup()">
         <img src="./app/images/red_x.png" />
-      </label>
-      <label class="col col-4 btn btn-primary" type="button" ng-click="next_question()">
+      </button>
+      <button class="col col-4 btn btn-primary" ng-click="next_question()">
         <img src="./app/images/forward_arrow.png" />
-      </label>
+      </button>
     </div>
   </div>
 </footer>
