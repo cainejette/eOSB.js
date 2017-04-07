@@ -54,10 +54,13 @@
 </footer>
 
 <div class="container-fluid" ng-show="showTcqReminder">
-  <div class="row tcq_reminder">
-    <div class="col align-self-center">
-      <label class="col col-4 btn btn-primary align-self-center justify-content-around" type="button" ng-click="open_tcqs()">open</label>
-      <label class="col col-4 btn btn-primary align-self-center justify-content-around" type="button" ng-click="close_tcq_reminder()">no</label>
+  <div class="row">
+    <div class="col text-center">
+      <h1>Open TCQs</h1>
     </div>
+  </div>
+  <div class="row tcq_reminder align-items-center justify-content-around">
+    <button class="col-4 btn btn-primary" ng-click="open_tcqs()">open</label>
+    <button class=" col-4 btn btn-primary" ng-click="close_tcq_reminder()">no</label>
   </div>
 </div>
