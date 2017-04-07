@@ -1,9 +1,8 @@
 'use strict';
 angular.module('app').controller('tcqsController', 
-    ['$location', '$scope', '$routeParams', function($location, $scope, $routeParams) {
-      console.log('hi there! i am tcqs');
+    ['$location', '$scope', '$routeParams', 'tcqs', function($location, $scope, $routeParams, tcqs) {
 
-      console.log('question: ' + $routeParams.question);
+      $scope.tcqs = tcqs;
 
       $scope.close = function() {
         $location.path(`/round/${$routeParams.file}/${$routeParams.question}`);

@@ -1,50 +1,74 @@
 [
   {
     "name": "Round Robin Round 1",
-    "file": "round_1.xml"
+    "file": "round_1.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Round Robin Round 2",
-    "file": "round_2.xml"
+    "file": "round_2.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Round Robin Round 3",
-    "file": "round_3.xml"
+    "file": "round_3.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Round Robin Round 4",
-    "file": "round_4.xml"
+    "file": "round_4.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Round Robin Round 5",
-    "file": "round_5.xml"
+    "file": "round_5.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 1",
-    "file": "round_6.xml"
+    "file": "round_6.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 2",
-    "file": "round_7.xml"
+    "file": "round_7.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 3",
-    "file": "round_8.xml"
+    "file": "round_8.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 4",
-    "file": "round_9.xml"
+    "file": "round_9.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 5",
-    "file": "round_10.xml"
+    "file": "round_10.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 6",
-    "file": "round_11.xml"
+    "file": "round_11.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   },
   {
     "name": "Double Elimination Round 7",
-    "file": "round_12.xml"
+    "file": "round_12.xml",
+    "a_duration": "3:00",
+    "b_duration": "2:00"
   }
 ]

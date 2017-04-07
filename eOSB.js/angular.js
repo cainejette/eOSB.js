@@ -47,14 +47,19 @@ angular.module('app', [
             controllerAs: '_ctrl',
             resolve: {
                 round: function($route, RoundService) {
-                    return RoundService.load($route.current.params.file);
+                    return RoundService.loadRound($route.current.params.file);
                 }
             }
         })
         $routeProvider.when('/tcqs/:file/:question', {
             templateUrl: _templateBase + 'tcqs/tcqs.html' ,
             controller: 'tcqsController',
-            controllerAs: '_ctrl'
+            controllerAs: '_ctrl',
+            resolve: {
+                tcqs: function($route, RoundService) {
+                    return RoundService.loadTcqs($route.current.params.file)
+                }
+            }
         })
         $routeProvider.otherwise({ redirectTo: '/' });
     }

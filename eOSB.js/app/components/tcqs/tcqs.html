@@ -8,9 +8,28 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <button class="text-center btn btn-primary col-6" ng-click="close()">
-      back to buzzers
-    </button>
+  <div class="">
+    <div class="row align-items-center justify-content-around tcq">
+      <button class="col-4 btn">
+        open TCQ A ({{ tcqs.a_duration }})
+      </button>
+      <button class="col-4 btn">
+        open TCQ A Solution
+      </button>
+    </div>
+    <div class="row align-items-center justify-content-around tcq">
+      <button class="col-4 btn">
+        open TCQ B ({{ tcqs.b_duration }})
+      </button>
+      <button class="col-4 btn">
+        open TCQ B Solution
+      </button>
+    </div>
+
+    <div class="row align-items-center justify-content-around back">
+      <button class="col-4 btn" ng-click="close()">
+        back to buzzers
+      </button>
+    </div>
   </div>
 </div>
