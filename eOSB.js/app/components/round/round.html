@@ -39,14 +39,14 @@
 
 <footer class="footer" ng-show="!showTcqReminder">
   <div class="container-fluid">
-    <div class="row">
-      <button class="col col-4 btn btn-primary" ng-click="back()" ng-disabled="questionIndex == 0">
+    <div class="row inputs">
+      <button class="col col-4 btn" ng-click="back()" ng-disabled="questionIndex == 0">
         <img src="./app/images/back_arrow.png" />
       </button>
-      <button class="col col-4 btn btn-primary" ng-click="next_tossup()">
+      <button class="col col-4 btn" ng-click="next_tossup()">
         <img src="./app/images/red_x.png" />
       </button>
-      <button class="col col-4 btn btn-primary" ng-click="next_question()">
+      <button class="col col-4 btn" ng-click="next_question()">
         <img src="./app/images/forward_arrow.png" />
       </button>
     </div>
@@ -60,7 +60,14 @@
     </div>
   </div>
   <div class="row tcq_reminder align-items-center justify-content-around">
-    <button class="col-4 btn btn-primary" ng-click="open_tcqs()">open</label>
-    <button class=" col-4 btn btn-primary" ng-click="close_tcq_reminder()">no</label>
+    <button class=" col-4 btn" ng-click="close_tcq_reminder()">
+      <img src="./app/images/back_arrow.png" />
+      back to buzzers
+    </label>
+
+    <button class="col-4 btn btn-primary" ng-click="open_tcqs()">
+      open tcqs
+      <img src="./app/images/forward_arrow.png" />
+    </label>
   </div>
 </div>
