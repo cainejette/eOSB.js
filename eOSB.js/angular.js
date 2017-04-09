@@ -41,7 +41,7 @@ angular.module('app', [
             controller: 'roundPreambleController',
             controllerAs: '_ctrl'
         })
-        $routeProvider.when('/round/:file/:question', {
+        $routeProvider.when('/round/:file/:question/:showTcqReminder', {
             templateUrl: _templateBase + 'round/round.html' ,
             controller: 'roundController',
             controllerAs: '_ctrl',
