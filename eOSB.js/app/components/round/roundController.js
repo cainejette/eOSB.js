@@ -6,9 +6,8 @@ angular.module('app').controller('roundController',
     $scope.questionIndex = parseInt($routeParams.question);
     $scope.question = questions[$scope.questionIndex];
     
-    $scope.showTcqReminder = false;
     var hasOpenedTcqs = false;
-
+    
     $scope.back = function() {
       if ($scope.questionIndex > 0) {
         $scope.questionIndex--;
@@ -51,5 +50,6 @@ angular.module('app').controller('roundController',
     var endRound = function() {
       console.log('done!');
     };
+    
   }]
 );
