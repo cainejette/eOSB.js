@@ -51,6 +51,11 @@ angular.module('app', [
                 }
             }
         })
+        $routeProvider.when('/tcqReminder/:file/:question', {
+            templateUrl: _templateBase + 'tcq_reminder/tcqReminder.html' ,
+            controller: 'tcqReminderController',
+            controllerAs: '_ctrl'
+        })
         $routeProvider.when('/tcqs/:file/:question', {
             templateUrl: _templateBase + 'tcqs/tcqs.html' ,
             controller: 'tcqsController',
