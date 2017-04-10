@@ -2,25 +2,6 @@
 
 var _templateBase = './app/components/';
 
-// const readFile = require('fs-readfile-promise');
-
-
-// var parseString = require('xml2js').parseString;
-
-// var parseStringPromisifier = function(string) {
-//     return new Promise(function(resolve, reject)
-//     {
-//         parseString(string, function(err, result){
-//             if(err){
-//                 reject(err);
-//             }
-//             else {
-//                 resolve(result);
-//             }
-//     });
-// });
-
-
 angular.module('app', [
     'ngRoute',
     'ngMaterial',

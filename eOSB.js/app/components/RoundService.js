@@ -19,5 +19,6 @@ angular.module('app').service('RoundService', function() {
 
     return require(__dirname + '/app/questions/info.json')
       .find(x => x.file == round);
-  }
+  };
+
 });

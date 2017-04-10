@@ -8,28 +8,31 @@
     </div>
   </div>
 
-  <div class="">
-    <div class="row align-items-center justify-content-around tcq">
-      <button class="col-4 btn">
-        open TCQ A ({{ tcqs.a_duration }})
-      </button>
-      <button class="col-4 btn">
-        open TCQ A Solution
-      </button>
-    </div>
-    <div class="row align-items-center justify-content-around tcq">
-      <button class="col-4 btn">
-        open TCQ B ({{ tcqs.b_duration }})
-      </button>
-      <button class="col-4 btn">
-        open TCQ B Solution
-      </button>
-    </div>
+  <div class="row align-items-center justify-content-around tcq">
+    <button class="col-4 btn" ng-click="open(0)">
+      open TCQ A ({{ tcqs.a_duration }})
+      <img src="./app/images/forward_arrow.png" />
+    </button>
+    <button class="col-4 btn" ng-click="open(2)">
+      open TCQ A Solution
+      <img src="./app/images/forward_arrow.png" />
+    </button>
+  </div>
+  <div class="row align-items-center justify-content-around tcq">
+    <button class="col-4 btn" ng-click="open(1)">
+      open TCQ B ({{ tcqs.b_duration }})
+      <img src="./app/images/forward_arrow.png" />
+    </button>
+    <button class="col-4 btn" ng-click="open(3)">
+      open TCQ B Solution
+      <img src="./app/images/forward_arrow.png" />
+    </button>
+  </div>
 
-    <div class="row align-items-center justify-content-around back">
-      <button class="col-4 btn" ng-click="close()">
-        back to buzzers
-      </button>
-    </div>
+  <div class="row align-items-center justify-content-around back">
+    <button class="col-4 btn" ng-click="close()">
+      <img src="./app/images/back_arrow.png" />
+      back to buzzers
+    </button>
   </div>
 </div>

@@ -14,7 +14,9 @@
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
     "electron-debug": "^1.1.0",
+    "electron-window-manager": "^1.0.4",
     "fs-promise": "^2.0.2",
+    "pdfjs-dist": "^1.8.177",
     "xml2js-es6-promise": "^1.1.1"
   }
 }
