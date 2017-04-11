@@ -58,4 +58,8 @@ app.on('ready', function () {
     tcqWindow.show();
   });
 
+  ipcMain.on('close_tcqs', function() {
+    tcqWindow.hide();
+  });
+
 });

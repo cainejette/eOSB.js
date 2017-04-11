@@ -30,4 +30,4 @@ ipcRenderer.on('open_tcq', (evt, arg) => {
       page.render(renderContext);
     });
   });
-})
+});

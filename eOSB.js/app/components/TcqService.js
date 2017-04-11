@@ -9,4 +9,8 @@ angular.module('app').service('TcqService', function() {
     ipcRenderer.send('show_tcq', `./questions/tcq_${round}_${namesForIndices[index]}.pdf`);
   };
 
+  this.closeTcqs = function() {
+    ipcRenderer.send('close_tcqs');
+  };
+
 });

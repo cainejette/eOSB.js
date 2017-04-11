@@ -9,6 +9,7 @@ angular.module('app').controller('tcqsController',
     };
 
     $scope.close = function() {
+      TcqService.closeTcqs();
       $location.path(`/round/${$routeParams.file}/${$routeParams.question}/false`);
     };
 
