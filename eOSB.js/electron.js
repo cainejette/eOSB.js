@@ -46,9 +46,14 @@ app.on('ready', function () {
     mainWindow = null;
   });
 
+  tcqWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'app', 'components', 'tcqWindow', 'tcqWindow.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
   
   ipcMain.on('show_tcq', function(evt, arg) {
-    console.log('hello!');
+    console.log('[electron] hello!');
     tcqWindow.webContents.send('open_tcq', arg);
     tcqWindow.show();
   });

@@ -17,6 +17,7 @@
     "electron-window-manager": "^1.0.4",
     "fs-promise": "^2.0.2",
     "pdfjs-dist": "^1.8.177",
+    "pdfjs-dist-for-node": "^1.0.892-rc.1",
     "xml2js-es6-promise": "^1.1.1"
   }
 }
