@@ -5,6 +5,7 @@ const electron = require('electron');
 const app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
 var mainWindow = null;
+const ipcMain = require('electron').ipcMain;
 
 const path = require('path');
 const url = require('url');
@@ -22,6 +23,9 @@ app.on('ready', function () {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({ width: 1400, height: 600 });
+  var tcqWindow = new BrowserWindow({show: false});
+  tcqWindow.setClosable(false);
+  tcqWindow.maximize();
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -32,10 +36,21 @@ app.on('ready', function () {
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
 
+    tcqWindow.setClosable(true);
+    tcqWindow.close();
+    tcqWindow = null;
+
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+  });
+
+  
+  ipcMain.on('show_tcq', function(evt, arg) {
+    console.log('hello!');
+    tcqWindow.webContents.send('open_tcq', arg);
+    tcqWindow.show();
   });
 
 });
