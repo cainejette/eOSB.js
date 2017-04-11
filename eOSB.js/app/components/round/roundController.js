@@ -39,6 +39,10 @@ angular.module('app').controller('roundController',
       }
     };
 
+    $scope.select_round = function() {
+      $location.path('/rounds');
+    }
+
     var checkTcqs = function() {
       if ($scope.questionIndex == 20 && $routeParams.showTcqReminder == 'true') {
         $location.path(`/tcqReminder/${$routeParams.file}/${$scope.questionIndex}`);
