@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app').controller('roundsController', 
-    ['$location', '$scope', function($location, $scope) {
+    ['$location', '$scope', 'RoundService', function($location, $scope, RoundService) {
         $scope.rounds = require('./app/questions/info.json');
         $scope.selectedRound = undefined;
 
@@ -10,6 +10,8 @@ angular.module('app').controller('roundsController',
         $scope.check = function(round) {
             $scope.selectedRound = round;
         }
+
+        $scope.openedRounds = RoundService.getOpenedRounds();
 
         $scope.openRound = function() {
             console.log('use scorekeeper: ' + $scope.useScorekeeping);

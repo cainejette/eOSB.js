@@ -5,7 +5,10 @@ var xml2js = require('xml2js-es6-promise');
 
 angular.module('app').service('RoundService', function() {
   
+  let openedRounds = new Set();
+
   this.loadRound = function(round) {
+    openedRounds.add(round);
     console.log('loading round: ' + round);
     return fsp
       .readFile(__dirname + `/app/questions/${round}`)
@@ -19,6 +22,10 @@ angular.module('app').service('RoundService', function() {
 
     return require(__dirname + '/app/questions/info.json')
       .find(x => x.file == round);
+  };
+
+  this.getOpenedRounds = function() {
+    return openedRounds;
   };
 
 });
