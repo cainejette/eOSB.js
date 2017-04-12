@@ -45,7 +45,6 @@ angular.module('app').controller('roundController',
 
     var checkTcqs = function() {
       if ($scope.questionIndex == 20 && $routeParams.showTcqReminder == 'true') {
-        // $location.path(`/tcqReminder/${$routeParams.file}/${$scope.questionIndex}`);
         $location.path(`/tcqs/${$routeParams.file}/${$scope.questionIndex}`);
       }
     };
