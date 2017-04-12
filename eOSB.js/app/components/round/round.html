@@ -32,8 +32,11 @@
     </div>
   </div>
 
-  <div class="row" ng-show="questionIndex >= 40">
-    end of round! <a href="" ng-click="select_round()">click?</a>
+  <div class="row round-end" ng-show="questionIndex >= 40">
+    <div class="col text-center">
+      <p>end of round!</p>
+      <a href="" ng-click="select_round()">open another?</a>
+    </div>
   </div>
 </div>
 
@@ -43,10 +46,10 @@
       <button class="col col-4 btn" ng-click="back()" ng-disabled="questionIndex == 0">
         <img src="./app/images/back_arrow.png" />
       </button>
-      <button class="col col-4 btn" ng-click="next_tossup()">
+      <button class="col col-4 btn" ng-click="next_tossup()" ng-disabled="questionIndex >= 40">
         <img src="./app/images/red_x.png" />
       </button>
-      <button class="col col-4 btn" ng-click="next_question()">
+      <button class="col col-4 btn" ng-click="next_question()" ng-disabled="questionIndex >= 40">
         <img src="./app/images/forward_arrow.png" />
       </button>
     </div>
