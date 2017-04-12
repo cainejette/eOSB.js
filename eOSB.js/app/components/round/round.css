@@ -19,3 +19,7 @@
 button {
   border: 1px black solid !important;
 }
+
+.round-end {
+  margin-top: 10vw;
+}
