@@ -6,3 +6,19 @@
   color: red !important;
   background-color: green;
 }
+
+.header {
+  margin-top: 2vw;
+}
+
+.header-content {
+  margin-top: 1vw;
+}
+
+.sub-header {
+  margin-top: 2vw;
+}
+
+.sub-header-content {
+  margin-top: 1vw;
+}
