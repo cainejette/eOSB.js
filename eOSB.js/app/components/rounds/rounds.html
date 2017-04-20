@@ -4,8 +4,8 @@
     <h1 class="text-center col header">Choose a round:</h1>
   </div>
 
-  <div class="row btn-group header-content">
-    <button ng-repeat="round in rounds" class="btn col col-4 round" ng-class="{checked: round == selectedRound, 'btn-primary': !openedRounds.has(round.file)}" ng-click="check(round)">
+  <div class="row btn-group header-content justify-content-center align-items-center">
+    <button ng-repeat="round in rounds" class="btn col col-3 round align-self-center" ng-class="{checked: round == selectedRound, 'btn-primary': !openedRounds.has(round.file)}" ng-click="check(round)">
       {{ round.name }}
     </button>
   </div>
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div class="row justify-content-center ">
+  <div class="row justify-content-center">
     <button class="text-center btn btn-primary col-6" ng-click="openRound()" ng-disabled="selectedRound == null">
       <img src="./app/images/forward_arrow.png" />
     </button>

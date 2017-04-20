@@ -1,10 +1,11 @@
 .round {
   height: 75px;
+  margin: 10px 25px 10px 25px;
 }
 
 .checked {
-  color: red !important;
-  background-color: green;
+  color: lime !important;
+  background-color: darkblue;
 }
 
 .header {
