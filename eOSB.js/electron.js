@@ -37,12 +37,18 @@ var open_set_team_names_dialog = function() {
   teamNameWindow.toggleDevTools();
 
   ipcMain.on('cancel_team_name_dialog', function() {
-    teamNameWindow.close();
+    if (teamNameWindow != null) {
+      teamNameWindow.close();
+      teamNameWindow = null;
+    }
   });
 
   ipcMain.on('close_team_name_dialog', function(evt, teamAName, teamBName) {
     console.log(teamAName, teamBName);
-    teamNameWindow.close();
+    if (teamNameWindow != null) {
+      teamNameWindow.close();
+      teamNameWindow = null;
+    }
   });
 };
 
@@ -140,9 +146,11 @@ app.on('ready', function () {
     tcqWindow.close();
     tcqWindow = null;
 
-    teamNameWindow.setClosable(true);
-    teamNameWindow.close();
-    teamNameWindow = null;
+    if (teamNameWindow != null) {
+      teamNameWindow.setClosable(true);
+      teamNameWindow.close();
+      teamNameWindow = null;
+    }
 
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
