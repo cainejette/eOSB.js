@@ -20,6 +20,11 @@ app.on('window-all-closed', function () {
   }
 });
 
+
+var open_round = function() {
+  console.log('opening round.');
+};
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
@@ -41,6 +46,13 @@ app.on('ready', function () {
       label: 'Options',
       submenu: [
         {
+          'label': 'Open round', 
+          'click': () => {
+            open_round();
+          }
+        }, {
+          type: 'separator'
+        }, {
           label: 'Font Size',
           submenu: [
             {
