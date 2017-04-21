@@ -27,12 +27,14 @@ var open_set_team_names_dialog = function() {
     parent: mainWindow,
     modal: true
   });
+
   teamNameWindow.center();
   teamNameWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'app', 'components', 'team_name', 'team_name_dialog.html'),
+    pathname: path.join(__dirname, 'app', 'components', 'team_name_dialog', 'team_name_dialog.html'),
     protocol: 'file:',
     slashes: true
   }));
+  teamNameWindow.toggleDevTools();
 
   ipcMain.on('cancel_team_name_dialog', function() {
     teamNameWindow.close();
@@ -137,6 +139,10 @@ app.on('ready', function () {
     tcqWindow.setClosable(true);
     tcqWindow.close();
     tcqWindow = null;
+
+    teamNameWindow.setClosable(true);
+    teamNameWindow.close();
+    teamNameWindow = null;
 
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
