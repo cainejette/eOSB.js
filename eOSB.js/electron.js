@@ -3,8 +3,11 @@ require('electron-reload')(__dirname);
 
 const electron = require('electron');
 const app = electron.app;
+const Menu = electron.Menu;
 var BrowserWindow = electron.BrowserWindow;
 var mainWindow = null;
+let teamNameWindow;
+
 const ipcMain = require('electron').ipcMain;
 
 const path = require('path');
@@ -23,6 +26,64 @@ app.on('ready', function () {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({ width: 1400, height: 600 });
+
+  const menuTemplate = [
+    {
+      label: 'eOSB',
+      submenu: [
+        {
+          label: 'Quit',
+          role: 'quit'
+        }
+      ]
+    },
+    {
+      label: 'Options',
+      submenu: [
+        {
+          label: 'Font Size',
+          submenu: [
+            {
+              label: 'small',
+              type: 'radio',
+              click: () => {
+                set_font_size('small');
+              }
+            }, {
+              label: 'medium',
+              type: 'radio',
+              checked: true,
+              click: () => {
+                set_font_size('medium');
+              }
+            }, {
+              label: 'large',
+              type: 'radio',
+              click: () => {
+                set_font_size('large');
+              }
+            }, {
+              label: 'extra large',
+              type: 'radio',
+              click: () => {
+                set_font_size('extra-large');
+              }
+            }
+          ]
+        }, {
+          'label': 'Set Team Names', 
+          'click': () => {
+            open_set_team_names_dialog();
+          }
+        }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
+
+
   var tcqWindow = new BrowserWindow({show: false});
   tcqWindow.setClosable(false);
   tcqWindow.maximize();
@@ -33,6 +94,8 @@ app.on('ready', function () {
     protocol: 'file:',
     slashes: true
   }));
+  mainWindow.center();
+
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
 
@@ -63,3 +126,27 @@ app.on('ready', function () {
   });
 
 });
+
+var open_set_team_names_dialog = function() {
+  teamNameWindow = new BrowserWindow({
+    width: 800, 
+    height: 400,
+    parent: mainWindow,
+    modal: true
+  });
+  teamNameWindow.center();
+  teamNameWindow.loadURL(url.format({
+    pathname: path.join(__dirname, '..', 'html', 'team_name.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  ipcMain.on('cancel_team_name_dialog', function() {
+    teamNameWindow.close();
+  });
+
+  ipcMain.on('close_team_name_dialog', function(evt, teamAName, teamBName) {
+    console.log(teamAName, teamBName);
+    teamNameWindow.close();
+  });
+}
