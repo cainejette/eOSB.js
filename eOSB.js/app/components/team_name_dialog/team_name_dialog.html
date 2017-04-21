@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>eOSB</title>
+    <link rel="stylesheet" href="../css/team_name.css">
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body class="container-fluid">
+    <div id="team_name" class="row">
+      <h2 class="row text-center">Set team names:</h2>
+      <div class="row">
+        <h3 class="col-xs-5 col-xs-offset-1">Team A</h3>
+        <input id="team_a_name" type="text" class="col-xs-5 input-lg">
+      </div>
+      <div class="row">
+        <h3 class="col-xs-5 col-xs-offset-1">Team B</h3>
+        <input id="team_b_name" type="text" class="col-xs-5 input-lg">
+      </div>
+      <div class="row">
+        <button id="cancel_button" type="button" class="col-xs-3 col-xs-offset-2 btn btn-primary">
+          <span class="helper"></span><img src="../images/back_arrow.png" />
+        </button>
+        <button id="submit_button" type="button" class="col-xs-3 col-xs-offset-2 btn btn-primary">
+          <span class="helper"></span><img src="../images/forward_arrow.png" />
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    require('./team_name_dialog.js')
+  </script>
+</html>

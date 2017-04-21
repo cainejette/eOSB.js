@@ -20,6 +20,29 @@ app.on('window-all-closed', function () {
   }
 });
 
+var open_set_team_names_dialog = function() {
+  teamNameWindow = new BrowserWindow({
+    width: 800, 
+    height: 400,
+    parent: mainWindow,
+    modal: true
+  });
+  teamNameWindow.center();
+  teamNameWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'app', 'components', 'team_name', 'team_name_dialog.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  ipcMain.on('cancel_team_name_dialog', function() {
+    teamNameWindow.close();
+  });
+
+  ipcMain.on('close_team_name_dialog', function(evt, teamAName, teamBName) {
+    console.log(teamAName, teamBName);
+    teamNameWindow.close();
+  });
+};
 
 var open_round = function() {
   console.log('opening round.');
@@ -138,27 +161,3 @@ app.on('ready', function () {
   });
 
 });
-
-var open_set_team_names_dialog = function() {
-  teamNameWindow = new BrowserWindow({
-    width: 800, 
-    height: 400,
-    parent: mainWindow,
-    modal: true
-  });
-  teamNameWindow.center();
-  teamNameWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '..', 'html', 'team_name.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
-
-  ipcMain.on('cancel_team_name_dialog', function() {
-    teamNameWindow.close();
-  });
-
-  ipcMain.on('close_team_name_dialog', function(evt, teamAName, teamBName) {
-    console.log(teamAName, teamBName);
-    teamNameWindow.close();
-  });
-}
